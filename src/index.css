@@ -49,6 +49,29 @@
   --color-glow-2: #f0a86c;
   --color-glow-3: #b9a7f0;
 
+  /* Icon hues
+   * The one place the site is allowed to leave the accent behind: content and
+   * social icons carry their own colour so a row of them reads as a set of
+   * different things rather than one repeated shape. Each hue comes in a
+   * glyph value and a `-soft` wash for the chip behind it. Which icon gets
+   * which hue is decided in components/icons — see `iconTone`. */
+  --color-hue-sky: #0a7cff;
+  --color-hue-sky-soft: #e3edff;
+  --color-hue-magenta: #d62976;
+  --color-hue-magenta-soft: #fce3ee;
+  --color-hue-red: #dd4b39;
+  --color-hue-red-soft: #fce6e2;
+  --color-hue-violet: #7c5ce0;
+  --color-hue-violet-soft: #ece7fd;
+  --color-hue-green: #2f9e5f;
+  --color-hue-green-soft: #ddf3e5;
+  --color-hue-amber: #b07524;
+  --color-hue-amber-soft: #fbeeda;
+  --color-hue-blue: #2f7bd6;
+  --color-hue-blue-soft: #e2edfb;
+  --color-hue-indigo: #5b5bd6;
+  --color-hue-indigo-soft: #e7e7fb;
+
   /* Motion */
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -72,6 +95,24 @@
     --color-glow-1: #2dd4bf;
     --color-glow-2: #d08a5a;
     --color-glow-3: #8f7ddb;
+
+    /* Icon hues: the glyph lifts, the wash drops to a tint of the charcoal. */
+    --color-hue-sky: #63a8ff;
+    --color-hue-sky-soft: #13243c;
+    --color-hue-magenta: #f472a6;
+    --color-hue-magenta-soft: #351527;
+    --color-hue-red: #ff7a63;
+    --color-hue-red-soft: #3a1d18;
+    --color-hue-violet: #a78bfa;
+    --color-hue-violet-soft: #241d3d;
+    --color-hue-green: #4ade80;
+    --color-hue-green-soft: #12301f;
+    --color-hue-amber: #e0a458;
+    --color-hue-amber-soft: #332512;
+    --color-hue-blue: #6aa8f5;
+    --color-hue-blue-soft: #14243a;
+    --color-hue-indigo: #8b8bf0;
+    --color-hue-indigo-soft: #1e1e3a;
   }
 
   html {

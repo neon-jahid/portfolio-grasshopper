@@ -16,10 +16,8 @@ export const profile = {
     tagline: 'সুখের বদলে বাগ খুঁজে বেড়ানো এক ক্লান্ত ইঞ্জিনিয়ার।',
     location: 'ঢাকা, বাংলাদেশ',
     email: 'zh08215@gmail.com',
-    /** Drop your CV into /public and point this at it. */
-    resumeUrl: '/resume.pdf',
     /** Availability pill in the hero. Set to '' to hide it. */
-    availability: 'নতুন সুযোগের খোঁজে আছি',
+    availability: 'Just Having Coffee',
     /**
      * BCP 47 tag, used to format dates. 'bn-BD' renders them in Bengali,
      * numerals included — keep it in step with <html lang> in index.html.
@@ -46,9 +44,9 @@ export const personal = {
 /**
  * The professional section — deliberately brief.
  *
- * Two sentences and three focus areas. Anything longer belongs on the CV or
- * in the full `skills` / `projects` / `experience` sections, which can be
- * switched on below.
+ * Two sentences and three focus areas. Anything longer belongs in the full
+ * `skills` / `projects` / `experience` sections, which can be switched on
+ * below.
  */
 export const professional = {
     summary:
@@ -59,8 +57,6 @@ export const professional = {
         { id: 'automation', label: 'টেস্ট অটোমেশন', icon: 'robot' },
         { id: 'api', label: 'API ও পারফরম্যান্স টেস্টিং', icon: 'pulse' },
     ],
-    /** Where to send anyone who wants the long version. */
-    cta: { label: 'সিভি ডাউনলোড করুন', href: '/resume.pdf' },
 };
 
 /**
@@ -102,9 +98,17 @@ export const navLinks = enabledSections.map((section) => ({
     href: section.href ?? `/#${section.id}`,
 }));
 
-/** Social profiles. `icon` must match a name exported from components/icons. */
+/**
+ * Social profiles. `icon` must match a name exported from components/icons.
+ *
+ * Personal channels rather than professional ones — this site is not a CV, so
+ * the hero, footer and menu send people somewhere they can actually say hello.
+ *
+ * Each link below still needs your own handle on the end:
+ *   m.me/<username> · instagram.com/<username>
+ */
 export const socials = [
-    { label: 'GitHub', href: 'https://github.com/', icon: 'github' },
-    { label: 'LinkedIn', href: 'https://linkedin.com/in/', icon: 'linkedin' },
+    { label: 'Messenger', href: 'https://m.me/', icon: 'messenger' },
+    { label: 'Instagram', href: 'https://instagram.com/', icon: 'instagram' },
     { label: 'ইমেইল', href: 'mailto:zh08215@gmail.com', icon: 'mail' },
 ];

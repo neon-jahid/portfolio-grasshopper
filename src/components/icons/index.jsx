@@ -9,6 +9,10 @@
  *   <Icon name="github" className="size-5" />
  *
  * or import a single icon directly: `import { GithubIcon } from '../icons'`.
+ *
+ * Colour comes from the parent, so an icon can be tinted by whatever is
+ * around it. The per-icon hues live in ./tones.js — they are kept out of this
+ * file so it exports nothing but components and fast refresh keeps working.
  */
 
 /** Props shared by every icon so they behave like one component. */
@@ -36,11 +40,18 @@ export const GithubIcon = (props) => (
   </Svg>
 );
 
-export const LinkedinIcon = (props) => (
+export const MessengerIcon = (props) => (
   <Svg {...props}>
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
-    <rect x="2" y="9" width="4" height="12" rx="1" />
-    <circle cx="4" cy="4" r="2" />
+    <path d="M12 3.2c-4.9 0-8.8 3.6-8.8 8.1 0 2.5 1.2 4.8 3.2 6.3v3.2l3-1.6c.8.2 1.7.3 2.6.3 4.9 0 8.8-3.6 8.8-8.2S16.9 3.2 12 3.2z" />
+    <path d="M6.5 14.5 11 9.8l2.4 2.5 4.1-2.5-4.5 4.7-2.4-2.5z" />
+  </Svg>
+);
+
+export const InstagramIcon = (props) => (
+  <Svg {...props}>
+    <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" />
+    <circle cx="12" cy="12" r="4" />
+    <path d="M17.5 6.5h.01" />
   </Svg>
 );
 
@@ -266,7 +277,8 @@ export const QuoteIcon = (props) => (
  */
 const iconsByName = {
   github: GithubIcon,
-  linkedin: LinkedinIcon,
+  messenger: MessengerIcon,
+  instagram: InstagramIcon,
   twitter: TwitterIcon,
   mail: MailIcon,
   arrowRight: ArrowRightIcon,

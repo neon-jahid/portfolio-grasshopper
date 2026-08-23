@@ -27,12 +27,11 @@ export const ui = {
         themeToLight: 'লাইট থিমে যান',
         themeToDark: 'ডার্ক থিমে যান',
         /** @param {string} year already converted to Bengali numerals */
-        copyright: (year, name) => `© ${year} ${name}। React, Vite আর Tailwind CSS দিয়ে বানানো।`,
+        copyright: (year, name) => `© ${year} ${name}। SQA`,
     },
 
     hero: {
         contact: 'যোগাযোগ করুন',
-        resume: 'সিভি',
         /** @param {string} name */
         portraitAlt: (name) => `${name}-এর ইলাস্ট্রেশন`,
     },
@@ -60,7 +59,6 @@ export const ui = {
         shown: (count) => `${count}টি দেখাচ্ছে`,
         /** Card and viewer screen-reader labels. */
         openPhoto: (title, location) => `${title}, ${location} — বড় করে দেখুন`,
-        openInGallery: (title, location) => `${title}, ${location} — গ্যালারিতে দেখুন`,
         viewerLabel: (title) => `${title} — বড় করে`,
         closeViewer: 'বন্ধ করুন',
         previousPhoto: 'আগের ছবি',
@@ -88,7 +86,9 @@ export const ui = {
 
     contact: {
         eyebrow: 'হ্যালো বলুন',
-        heading: 'চলুন, কথা বলি।',
+        heading: `Let's talk`,
+        /** Screen-reader label on the envelope above the address. */
+        mailLabel: 'ইমেইল পাঠান',
     },
 
     skills: {

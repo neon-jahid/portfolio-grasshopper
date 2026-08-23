@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   activePhotoCategories,
@@ -8,30 +8,34 @@ import {
 } from '../data/photography';
 import { Container } from '../components/ui/Container';
 import { Button } from '../components/ui/Button';
-import { ArrowRightIcon } from '../components/icons';
+import { Lightbox } from '../components/ui/Lightbox';
+import { ArrowRightIcon, ExpandIcon } from '../components/icons';
 import { cn, toBanglaDigits } from '../lib/utils';
 import { fadeUp, staggerContainer, whenInView } from '../lib/motion';
 import { ui } from '../data/ui';
 
 /** One large frame plus a four-up grid. Anything past five is ignored. */
-const [featurePhoto, ...gridPhotos] = getFeaturedPhotos(5);
+const featuredPhotos = getFeaturedPhotos(5);
+const [featurePhoto] = featuredPhotos;
 
 /**
  * Home-page photography highlight.
  *
- * Deliberately not a gallery: no filters, no lightbox, no masonry. It is one
- * large frame beside a four-up grid, and it exists to send people to /photos
- * where all of that lives. Keeping the interactive weight on the dedicated
- * page stops the home page turning into two sites stacked on top of each
- * other.
+ * Still not the gallery: no filters, no masonry, and the button to /photos
+ * stays the way to see everything. A frame does open the same viewer the
+ * gallery uses, though — clicking a photo and landing on another page instead
+ * of simply seeing it bigger reads as a broken link rather than a teaser. The
+ * viewer only ever holds these five.
  *
  * The layout is a fixed-height grid from `lg` up rather than a row of aspect
  * ratios: the feature spans both rows, the four tiles fill the column beside
  * it, and every edge lines up because the grid — not the images — decides the
- * heights. Below `lg` the images take their ratios back and the grid folds
- * into a feature with a 2×2 underneath it.
+ * heights. Below `lg` the frames keep fixed ratios of their own, so an upright
+ * phone shot and a wide camera frame still fill the same tile.
  */
 export function PhotographyPreview() {
+  const [openIndex, setOpenIndex] = useState(null);
+
   if (!featurePhoto) return null;
 
   return (
@@ -100,17 +104,24 @@ export function PhotographyPreview() {
             'lg:h-[38rem] lg:grid-cols-4 lg:grid-rows-2',
           )}
         >
-          <Frame
-            photo={featurePhoto}
-            featured
-            className="col-span-2 lg:row-span-2"
-          />
-
-          {gridPhotos.map((photo) => (
-            <Frame key={photo.id} photo={photo} />
+          {featuredPhotos.map((photo, index) => (
+            <Frame
+              key={photo.id}
+              photo={photo}
+              featured={index === 0}
+              onOpen={() => setOpenIndex(index)}
+              className={index === 0 ? 'col-span-2 lg:row-span-2' : undefined}
+            />
           ))}
         </motion.ul>
       </Container>
+
+      <Lightbox
+        photos={featuredPhotos}
+        index={openIndex}
+        onClose={() => setOpenIndex(null)}
+        onIndexChange={setOpenIndex}
+      />
     </section>
   );
 }
@@ -119,21 +130,25 @@ export function PhotographyPreview() {
  * One frame in the highlight grid.
  *
  * Below `lg` the aspect ratio holds the shape; from `lg` the grid cell does,
- * so `aspect-auto` hands control over at the breakpoint.
+ * so `aspect-auto` hands control over at the breakpoint. Either way the image
+ * fills the frame and is cropped from its middle, so the framing never depends
+ * on the shape of the file that was dropped in.
  *
  * @param {object} props
  * @param {object} props.photo
+ * @param {Function} props.onOpen
  * @param {boolean} [props.featured=false] the large frame — keeps its caption
  *   on screen at all times rather than waiting for a hover
  */
-function Frame({ photo, featured = false, className }) {
+function Frame({ photo, onOpen, featured = false, className }) {
   return (
     <motion.li variants={fadeUp} className={cn('min-h-0', className)}>
-      <Link
-        to="/photos"
-        aria-label={ui.photography.openInGallery(photo.title, photo.location)}
+      <button
+        type="button"
+        onClick={onOpen}
+        aria-label={ui.photography.openPhoto(photo.title, photo.location)}
         className={cn(
-          'group relative block size-full overflow-hidden rounded-2xl border border-line bg-surface-2',
+          'group relative block size-full cursor-zoom-in overflow-hidden rounded-2xl border border-line bg-surface-2',
           'transition-all duration-500 ease-out hover:-translate-y-1 hover:border-accent/50',
           'hover:shadow-[0_28px_60px_-32px_rgba(0,0,0,0.55)]',
           featured ? 'aspect-[4/5] lg:aspect-auto' : 'aspect-square lg:aspect-auto',
@@ -144,7 +159,7 @@ function Frame({ photo, featured = false, className }) {
           alt={photo.title}
           loading="lazy"
           decoding="async"
-          className="size-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
+          className="size-full object-cover object-center transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
         />
 
         {/* The caption stays on screen for touch, where there is no hover to
@@ -159,9 +174,18 @@ function Frame({ photo, featured = false, className }) {
           )}
         />
 
+        {/* Enlarge affordance, pointer devices only — the same one the gallery
+            cards carry, so both surfaces advertise the same viewer. */}
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute top-4 right-4 hidden size-9 scale-90 place-items-center rounded-full border border-white/25 bg-white/10 text-white opacity-0 backdrop-blur transition-all duration-400 group-hover:scale-100 group-hover:opacity-100 sm:grid"
+        >
+          <ExpandIcon className="size-4" />
+        </span>
+
         <span
           className={cn(
-            'pointer-events-none absolute inset-x-0 bottom-0 block',
+            'pointer-events-none absolute inset-x-0 bottom-0 block text-left',
             featured ? 'p-5 sm:p-7' : 'p-4',
             !featured &&
               'sm:translate-y-2 sm:opacity-0 sm:transition-all sm:duration-500 sm:ease-out sm:group-hover:translate-y-0 sm:group-hover:opacity-100',
@@ -179,7 +203,7 @@ function Frame({ photo, featured = false, className }) {
             {photo.location} · {photo.year}
           </span>
         </span>
-      </Link>
+      </button>
     </motion.li>
   );
 }

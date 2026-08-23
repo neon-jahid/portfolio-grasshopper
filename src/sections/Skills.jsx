@@ -4,6 +4,8 @@ import { Card } from '../components/ui/Card';
 import { Reveal } from '../components/ui/Reveal';
 import { SkillMeter } from '../components/ui/SkillMeter';
 import { Icon } from '../components/icons';
+import { iconTone } from '../components/icons/tones';
+import { cn } from '../lib/utils';
 import { ui } from '../data/ui';
 
 /**
@@ -23,7 +25,12 @@ export function Skills() {
           <Reveal.Item key={group.id}>
             <Card className="h-full p-6">
               <div className="flex items-start gap-4">
-                <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent">
+                <span
+                  className={cn(
+                    'grid size-11 shrink-0 place-items-center rounded-xl',
+                    iconTone(group.icon).chip,
+                  )}
+                >
                   <Icon name={group.icon} className="size-5" />
                 </span>
 

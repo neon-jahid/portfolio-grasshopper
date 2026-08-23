@@ -5,6 +5,7 @@ import { Section } from '../components/ui/Section';
 import { SpotlightCard } from '../components/ui/SpotlightCard';
 import { Reveal } from '../components/ui/Reveal';
 import { ArrowUpRightIcon, Icon } from '../components/icons';
+import { iconTone } from '../components/icons/tones';
 import { usePrefersReducedMotion } from '../hooks/useMediaQuery';
 import { cn } from '../lib/utils';
 import { ui } from '../data/ui';
@@ -73,13 +74,18 @@ function InterestCard({ interest, featured }) {
         <Icon
           name={interest.icon}
           aria-hidden="true"
-          className="pointer-events-none absolute -right-8 -bottom-10 size-52 text-accent/[0.07] transition-transform duration-700 ease-out group-hover:-translate-y-2 group-hover:rotate-6"
+          className={cn(
+            'pointer-events-none absolute -right-8 -bottom-10 size-52',
+            'transition-transform duration-700 ease-out group-hover:-translate-y-2 group-hover:rotate-6',
+            iconTone(interest.icon).wash,
+          )}
         />
       )}
 
       <span
         className={cn(
-          'grid shrink-0 place-items-center rounded-xl bg-accent-soft text-accent',
+          'grid shrink-0 place-items-center rounded-xl',
+          iconTone(interest.icon).chip,
           'transition-transform duration-500 ease-out group-hover:-rotate-6 group-hover:scale-110',
           featured ? 'size-12' : 'size-10',
         )}

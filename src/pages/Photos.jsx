@@ -24,9 +24,10 @@ const ALL = { id: 'all', label: ui.photography.allFilter };
  * Laid out like the blog archive — page header, a control bar, then the
  * results — so the two "everything of this kind" pages feel like siblings.
  *
- * The grid is CSS columns rather than a JS masonry library: each card
- * declares its own aspect ratio, so the browser needs no measuring pass and
- * nothing shifts once the images arrive.
+ * The grid is an even three-up rather than a masonry: every card holds the
+ * same 4:5 frame and crops its photo from the middle, so a portrait phone
+ * shot and a wide camera frame sit on the same baseline and nothing shifts
+ * once the images arrive.
  *
  * Changing the filter remounts the grid under a new key, which re-runs the
  * stagger. That reads as the set being dealt out again rather than items
@@ -116,19 +117,15 @@ export default function Photos() {
           <motion.div
             key={category}
             {...whenInView}
-            // A full masonry is far taller than the viewport, so the shared
+            // The full grid is far taller than the viewport, so the shared
             // 20%-visible threshold would leave it hidden. Any sliver will do.
             viewport={{ once: true, amount: 0.02 }}
             exit={{ opacity: 0, y: -8, transition: { duration: 0.2, ease: EASE } }}
             variants={staggerContainer(0.07)}
-            className="mt-10 columns-1 gap-5 sm:columns-2 lg:columns-3"
+            className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
           >
             {visiblePhotos.map((photo, index) => (
-              <motion.div
-                key={photo.id}
-                variants={fadeUp}
-                className="mb-5 break-inside-avoid"
-              >
+              <motion.div key={photo.id} variants={fadeUp}>
                 <PhotoCard photo={photo} onOpen={() => setOpenIndex(index)} />
               </motion.div>
             ))}

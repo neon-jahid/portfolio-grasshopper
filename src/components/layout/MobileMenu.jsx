@@ -4,6 +4,7 @@ import { navLinks, socials } from '../../data/site';
 import { useLockBodyScroll } from '../../hooks/useLockBodyScroll';
 import { SmartLink } from '../ui/SmartLink';
 import { CloseIcon, Icon } from '../icons';
+import { iconTone } from '../icons/tones';
 import { cn } from '../../lib/utils';
 import { EASE } from '../../lib/motion';
 import { ui } from '../../data/ui';
@@ -113,7 +114,10 @@ export function MobileMenu({ isOpen, onClose, isLinkActive }) {
                   aria-label={social.label}
                   className="grid size-10 place-items-center rounded-full border border-line text-muted transition-colors hover:border-accent hover:text-accent"
                 >
-                  <Icon name={social.icon} className="size-5" />
+                  <Icon
+                    name={social.icon}
+                    className={cn('size-5', iconTone(social.icon).glyph)}
+                  />
                 </a>
               ))}
             </motion.div>
