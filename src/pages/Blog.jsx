@@ -33,7 +33,7 @@ export default function Blog() {
 
   return (
     <motion.div {...pageTransition}>
-      <Container className="py-20">
+      <Container className="py-14 sm:py-20">
         <header className="max-w-2xl">
           <p className="font-mono text-xs tracking-[0.2em] text-accent uppercase">
             {ui.blog.eyebrow}

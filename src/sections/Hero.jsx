@@ -7,7 +7,7 @@ import { ArrowRightIcon, Icon } from '../components/icons';
 import { iconTone } from '../components/icons/tones';
 import { cn } from '../lib/utils';
 import { fadeUp, staggerContainer } from '../lib/motion';
-import heroPortrait from '../assets/hero-portrait.png';
+import heroPortrait from '../assets/hero-portrait.webp';
 import { ui } from '../data/ui';
 
 /**
@@ -21,10 +21,10 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-[calc(100svh-4.5rem)] items-center overflow-hidden"
+      className="relative flex min-h-[36rem] items-center overflow-hidden lg:min-h-[calc(100svh-4.5rem)]"
     >
-      <Container className="relative py-20">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+      <Container className="relative py-14 sm:py-20">
+        <div className="grid items-center gap-10 sm:gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
           <motion.div
             variants={staggerContainer(0.12, 0.1)}
             initial="hidden"
@@ -33,7 +33,7 @@ export function Hero() {
             {profile.availability && (
               <motion.p
                 variants={fadeUp}
-                className="mb-8 inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-1.5 font-mono text-xs text-muted"
+                className="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-1.5 font-mono text-xs text-muted sm:mb-8"
               >
                 <span className="relative flex size-2">
                   <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-70" />
@@ -49,7 +49,7 @@ export function Hero() {
 
             <motion.h1
               variants={fadeUp}
-              className="mt-3 text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl"
+              className="mt-3 text-4xl font-semibold tracking-tight sm:text-6xl lg:text-7xl"
             >
               {profile.name}
             </motion.h1>
@@ -67,7 +67,7 @@ export function Hero() {
 
             <motion.div
               variants={fadeUp}
-              className="mt-10 flex flex-wrap items-center gap-3"
+              className="mt-8 flex flex-wrap items-center gap-3 sm:mt-10"
             >
               <Button href="#contact">
                 {ui.hero.contact}

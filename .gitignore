@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Full-size camera originals. The site serves the WebP files in
+# public/photos that are generated from these — see README.
+photo-originals

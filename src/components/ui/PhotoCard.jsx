@@ -1,5 +1,5 @@
 import { ExpandIcon } from '../icons';
-import { cn } from '../../lib/utils';
+import { cn, photoSrcSet } from '../../lib/utils';
 import { ui } from '../../data/ui';
 
 /**
@@ -33,6 +33,9 @@ export function PhotoCard({ photo, onOpen, className }) {
     >
       <img
         src={photo.src}
+        srcSet={photoSrcSet(photo.src)}
+        // Three columns inside a 72rem container, two from `sm`, one below.
+        sizes="(min-width: 1024px) 22rem, (min-width: 640px) 45vw, 92vw"
         alt={photo.title}
         loading="lazy"
         decoding="async"

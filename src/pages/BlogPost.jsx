@@ -38,7 +38,7 @@ export default function BlogPost() {
     <motion.div {...pageTransition}>
       <ReadingProgress />
 
-      <Container size="narrow" className="py-16">
+      <Container size="narrow" className="py-12 sm:py-16">
         <Link
           to="/blog"
           className="inline-flex items-center gap-2 font-mono text-xs text-muted transition-colors hover:text-accent"

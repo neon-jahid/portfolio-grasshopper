@@ -10,7 +10,7 @@ import { Container } from '../components/ui/Container';
 import { Button } from '../components/ui/Button';
 import { Lightbox } from '../components/ui/Lightbox';
 import { ArrowRightIcon, ExpandIcon } from '../components/icons';
-import { cn, toBanglaDigits } from '../lib/utils';
+import { cn, photoSrcSet, toBanglaDigits } from '../lib/utils';
 import { fadeUp, staggerContainer, whenInView } from '../lib/motion';
 import { ui } from '../data/ui';
 
@@ -156,6 +156,8 @@ function Frame({ photo, onOpen, featured = false, className }) {
       >
         <img
           src={photo.src}
+          srcSet={photoSrcSet(photo.src)}
+          sizes={featured ? '(min-width: 1024px) 34rem, 92vw' : '(min-width: 1024px) 17rem, 46vw'}
           alt={photo.title}
           loading="lazy"
           decoding="async"

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLockBodyScroll } from '../../hooks/useLockBodyScroll';
 import { ChevronLeftIcon, ChevronRightIcon, CloseIcon } from '../icons';
-import { cn } from '../../lib/utils';
+import { cn, photoSrcSet } from '../../lib/utils';
 import { EASE } from '../../lib/motion';
 import { ui } from '../../data/ui';
 import { toBanglaDigits } from '../../lib/utils';
@@ -176,6 +176,8 @@ export function Lightbox({ photos, index, onClose, onIndexChange }) {
                 >
                   <img
                     src={photo.src}
+                    srcSet={photoSrcSet(photo.src)}
+                    sizes="100vw"
                     alt={photo.title}
                     draggable="false"
                     className="max-h-full max-w-full rounded-xl border border-line object-contain shadow-[0_40px_120px_-40px_rgba(0,0,0,0.8)]"
@@ -232,6 +234,8 @@ export function Lightbox({ photos, index, onClose, onIndexChange }) {
                     >
                       <img
                         src={item.src}
+                        srcSet={photoSrcSet(item.src)}
+                        sizes="3.5rem"
                         alt=""
                         loading="lazy"
                         className="size-full object-cover"

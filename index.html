@@ -43,13 +43,18 @@
       only downloaded once a Bengali glyph is actually on the page — an
       English-only visit costs nothing extra.
 
+      Only the weights the site actually uses are requested: 400 for body,
+      500 for `font-medium`, 600 for headings and 700 for the bold runs in
+      blog posts. Every extra weight is another file, and the Bengali ones are
+      the largest on the page — so do not add one here without a use for it.
+
       The site is in Bangla, so <html lang="bn"> is set above and the script
       rules in src/index.css handle tracking and leading. Switching back to
       English means changing it to lang="en" and profile.locale in
       src/data/site.js to 'en-GB'.
     -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Mono:wght@400&family=Hind+Siliguri:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
   </head>

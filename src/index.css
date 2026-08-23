@@ -24,8 +24,14 @@
   /* For text that should be Bengali-first — see the `font-bangla` utility. */
   --font-bangla: 'Hind Siliguri', 'Noto Sans Bengali', ui-sans-serif, sans-serif;
 
-  /* Layout */
-  --spacing-section: 7.5rem; /* vertical rhythm between page sections */
+  /* Layout
+   * The gap between sections scales with the viewport instead of sitting at
+   * one desktop-sized value: 7.5rem of padding above and below every section
+   * means 15rem of empty screen between them, which on a phone is most of a
+   * scroll with nothing in it. This runs from ~3.25rem on a small phone to
+   * 6.5rem on a wide desktop. Every section reads it through `py-section`, so
+   * this line sets the rhythm of the whole site. */
+  --spacing-section: clamp(3.25rem, 2rem + 4.5vw, 6.5rem);
 
   /* Brand accent — a single hue used for links, highlights and focus rings */
   --color-accent: #0f8f80;
@@ -225,35 +231,41 @@
 /* -------------------------------------------------------------------------
  * Background motion
  * The glows drift slowly and out of sync, so the page never looks completely
- * static. The reduced-motion rule above disables all of it.
+ * static. The reduced-motion rule above disables all of it, and
+ * PageBackground only turns the drift on from `lg` up.
+ *
+ * Translation only, deliberately: these elements carry a 150px blur, and a
+ * blurred layer that changes size has to be re-blurred every frame. Moving it
+ * lets the compositor reuse the texture it already has, which is the
+ * difference between a smooth background and a warm phone.
  * ---------------------------------------------------------------------- */
 @keyframes drift-a {
   0%,
   100% {
-    transform: translate3d(0, 0, 0) scale(1);
+    transform: translate3d(0, 0, 0);
   }
   50% {
-    transform: translate3d(6%, -8%, 0) scale(1.15);
+    transform: translate3d(8%, -10%, 0);
   }
 }
 
 @keyframes drift-b {
   0%,
   100% {
-    transform: translate3d(0, 0, 0) scale(1.1);
+    transform: translate3d(0, 0, 0);
   }
   50% {
-    transform: translate3d(-7%, 6%, 0) scale(1);
+    transform: translate3d(-9%, 8%, 0);
   }
 }
 
 @keyframes drift-c {
   0%,
   100% {
-    transform: translate3d(0, 0, 0) scale(1);
+    transform: translate3d(0, 0, 0);
   }
   50% {
-    transform: translate3d(4%, 7%, 0) scale(1.08);
+    transform: translate3d(6%, 9%, 0);
   }
 }
 

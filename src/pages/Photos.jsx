@@ -61,12 +61,12 @@ export default function Photos() {
 
   return (
     <motion.div {...pageTransition}>
-      <Container className="py-20">
+      <Container className="py-14 sm:py-20">
         <header className="max-w-2xl">
           <p className="font-mono text-xs tracking-[0.2em] text-accent uppercase">
             {photographyIntro.eyebrow}
           </p>
-          <h1 className="mt-3 text-4xl font-semibold lowercase sm:text-5xl">
+          <h1 className="mt-3 text-3xl font-semibold lowercase sm:text-5xl">
             {photographyIntro.title}
           </h1>
           <p className="mt-4 text-lg text-muted">

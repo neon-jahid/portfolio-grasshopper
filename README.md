@@ -46,9 +46,9 @@ to make the site yours.
 | Work history, education, certifications | `src/data/experience.js` |
 | Blog posts | `src/content/posts/*.md` |
 | Colours, fonts, spacing | `src/index.css` (`@theme` block) |
-| Résumé PDF | `public/resume.pdf` |
-| Hero / about illustrations | `src/assets/hero-portrait.png`, `src/assets/about-portrait.png` |
-| Gallery image files | `public/photos/` |
+| Hero / about illustrations | `src/assets/hero-portrait.webp`, `src/assets/about-portrait.webp` |
+| Full-size camera originals (git-ignored) | `photo-originals/` |
+| Gallery image files the site serves | `public/photos/` |
 
 ### Two kinds of words
 
@@ -117,20 +117,28 @@ Photography lives in two places, both fed by `src/data/photography.js`:
 
 | Surface | File | What it does |
 | --- | --- | --- |
-| Home-page highlight | `src/sections/PhotographyPreview.jsx` | One large frame beside a four-up grid, linking through |
-| Full gallery, `/photos` | `src/pages/Photos.jsx` | Filters, masonry, fullscreen viewer |
+| Home-page highlight | `src/sections/PhotographyPreview.jsx` | One large frame beside a four-up grid; a frame opens the viewer |
+| Full gallery, `/photos` | `src/pages/Photos.jsx` | Filters, even grid, fullscreen viewer |
 
-The teaser deliberately has no filters, no lightbox and no masonry — all the
-interactive weight sits on the dedicated page, which also means the gallery
-code only downloads for visitors who ask for it. Which frames appear in the
-strip is set by `featured: true` in the data; if nothing is flagged it falls
-back to the first five, so the band never renders empty.
+The teaser deliberately has no filters and no categories — the browsing weight
+sits on the dedicated page. Which frames appear in the strip is set by
+`featured: true` in the data; if nothing is flagged it falls back to the first
+five, so the band never renders empty.
 
-The gallery ships with nine generated placeholders in `public/photos/` so both
-surfaces work out of the box. Replacing them is two steps:
+### Adding photos
 
-1. Drop your files into `public/photos/` (`.jpg`, `.webp`, whatever).
-2. Point each entry in `src/data/photography.js` at them.
+Never point `src` straight at a file off a camera or a phone: those run 3-6MB
+each, and a handful of them is a page that takes half a minute on mobile data.
+Everything under `public/photos/` is published at two WebP sizes instead —
+1600px and 800px — and `photoSrcSet` in `src/lib/utils.js` hands the browser
+both so a phone downloads roughly a quarter of the bytes a desktop does.
+
+1. Drop the full-size file into `photo-originals/` (git-ignored).
+2. Run `npm run photos`. It writes `name.webp` and `name-800.webp` into
+   `public/photos/`, honours the EXIF rotation phones write, and never
+   enlarges a small original.
+3. Point the entry in `src/data/photography.js` at the 1600px file. The 800px
+   one is found automatically — it is never named in the data.
 
 ```js
 {
@@ -139,23 +147,21 @@ surfaces work out of the box. Replacing them is two steps:
   location: 'Bandarban',
   year: '2025',
   category: 'landscapes',        // must match an id in photoCategories
-  src: '/photos/fog-on-the-sangu.jpg',
-  width: 1200,                   // natural size — used only as a ratio
-  height: 1500,
+  src: '/photos/fog-on-the-sangu.webp',   // the 1600px file; -800 is implied
   caption: 'Shown in the viewer, under the title.',
   featured: true,                // promote onto the home-page strip
 }
 ```
 
-`width` and `height` never size anything; they reserve the right amount of
-space in the masonry before the file downloads, so the grid does not jump as
-photos arrive. Any proportional pair works.
+The file's own dimensions do not matter. Every card holds the same 4:5 frame
+and crops its photo from the middle, so an upright phone shot and a wide
+camera frame sit on the same baseline and nothing shifts as photos arrive. The
+viewer shows the whole uncropped image.
 
 On `/photos` the filter row builds itself from `photoCategories`, and
 categories with no photos are dropped automatically — so deleting every
-portrait also removes the "portraits" filter. Mixed orientations are the
-point: the layout is CSS columns, and each card carries its own aspect ratio.
-The home highlight ignores the ratios: from `lg` up it is a fixed-height grid
+portrait also removes the "portraits" filter. The home highlight uses a shape
+of its own: from `lg` up it is a fixed-height grid
 where the feature spans both rows and the four tiles fill the column beside
 it, so the grid — not the images — decides the heights and every edge lines
 up. Below `lg` the images take their ratios back and it folds into a feature

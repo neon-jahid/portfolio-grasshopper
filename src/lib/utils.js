@@ -87,3 +87,20 @@ export function slugify(value) {
     .replace(/\s+/g, '-')
     .replace(/-+/g, '-');
 }
+
+/**
+ * Responsive `srcset` for a gallery photo.
+ *
+ * Every photo in public/photos ships at two widths — `name.webp` at 1600px
+ * and `name-800.webp` at 800px — so a phone downloads roughly a quarter of
+ * the bytes a desktop does. Anything that is not a `.webp` (the placeholder
+ * SVGs, an externally hosted image) has no second size, so this returns
+ * undefined and the browser just uses `src`.
+ *
+ * @param {string} src  path as written in data/photography.js
+ * @returns {string|undefined} value for the `srcSet` attribute
+ */
+export function photoSrcSet(src) {
+  if (!src.endsWith('.webp')) return undefined;
+  return `${src.replace(/\.webp$/, '-800.webp')} 800w, ${src} 1600w`;
+}

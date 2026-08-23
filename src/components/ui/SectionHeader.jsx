@@ -13,7 +13,7 @@ import { EASE } from '../../lib/motion';
  */
 export function SectionHeader({ title, eyebrow, description, id, className }) {
   return (
-    <header className={cn('mb-12', className)}>
+    <header className={cn('mb-8 sm:mb-12', className)}>
       {eyebrow && (
         <motion.p
           initial={{ opacity: 0, y: 8 }}
@@ -26,14 +26,14 @@ export function SectionHeader({ title, eyebrow, description, id, className }) {
         </motion.p>
       )}
 
-      <div className="flex items-center gap-5">
+      <div className="flex items-center gap-4 sm:gap-5">
         <motion.h2
           id={id ? `${id}-title` : undefined}
           initial={{ opacity: 0, x: -16 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: EASE }}
-          className="shrink-0 text-3xl font-semibold lowercase sm:text-4xl"
+          className="shrink-0 text-2xl font-semibold lowercase sm:text-4xl"
         >
           {title}
         </motion.h2>

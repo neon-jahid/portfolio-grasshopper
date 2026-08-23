@@ -6,7 +6,7 @@ import { Portrait } from '../components/ui/Portrait';
 import { Tag } from '../components/ui/Tag';
 import { ArrowRightIcon, MapPinIcon } from '../components/icons';
 import { fadeUp, staggerContainer, whenInView } from '../lib/motion';
-import aboutPortrait from '../assets/about-portrait.png';
+import aboutPortrait from '../assets/about-portrait.webp';
 import { ui } from '../data/ui';
 
 /**

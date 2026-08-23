@@ -6,9 +6,13 @@
  * (`pages/Photos.jsx`) — so the copy below has a short line for the teaser
  * and a longer one for the page itself.
  *
- * Swapping in your own work is a two-step job:
- *   1. drop the files into `public/photos/`
- *   2. point `src` at them
+ * Adding your own work:
+ *   1. drop the full-size file into `photo-originals/`
+ *   2. run `npm run photos`, which writes a 1600px and an 800px WebP into
+ *      `public/photos/`
+ *   3. point `src` at the 1600px one — the 800px file is picked up on its own
+ *      by `photoSrcSet` in lib/utils.js, so phones download a quarter of the
+ *      bytes
  *
  * The file's own dimensions do not matter: every frame on both surfaces is a
  * fixed shape and crops its photo from the middle, so a portrait phone shot
@@ -60,7 +64,7 @@ export const photos = [
         location: 'দিয়াবাড়ি',
         year: '2026',
         category: 'streets',
-        src: '/photos/flower.jpg',
+        src: '/photos/flower.webp',
         caption: '',
         featured: true,
     },
@@ -70,7 +74,7 @@ export const photos = [
         location: 'নিকুঞ্জ',
         year: '2026',
         category: 'everyday',
-        src: '/photos/cat.jpg',
+        src: '/photos/cat.webp',
         featured: true,
     },
     {
@@ -79,7 +83,7 @@ export const photos = [
         location: 'ঢাকা',
         year: '2024',
         category: 'streets',
-        src: '/photos/soinik-club.jpg',
+        src: '/photos/soinik-club.webp',
         featured: true,
     },
     {
@@ -88,7 +92,7 @@ export const photos = [
         location: 'সিরাজগঞ্জ',
         year: '2025',
         category: 'landscapes',
-        src: '/photos/windmill.jpg',
+        src: '/photos/windmill.webp',
         featured: true,
     },
     {
@@ -97,7 +101,7 @@ export const photos = [
         location: 'সিরাজগঞ্জ',
         year: '2026',
         category: 'streets',
-        src: '/photos/cactus.jpg',
+        src: '/photos/cactus.webp',
         caption: '',
         featured: true,
     },
@@ -128,16 +132,6 @@ export const photos = [
         category: 'landscapes',
         src: '/photos/twelve-seconds-of-sea.svg',
         caption: 'লম্বা এক্সপোজার, সস্তা একটা ট্রাইপড, আর প্রচুর বাতাস।',
-    },
-    {
-        id: 'ridwan-mid-laugh',
-        title: 'রিদওয়ান, হাসির মাঝখানে',
-        location: 'ঢাকা',
-        year: '2025',
-        category: 'portraits',
-        src: '/photos/ridwan-mid-laugh.svg',
-        caption: 'একচল্লিশ নম্বর ফ্রেম। প্রথম চল্লিশটায় ও শুধু পোজ দিয়ে গেছে।',
-        featured: true,
     },
 ];
 
