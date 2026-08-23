@@ -1,4 +1,6 @@
 import { getRecentPosts } from '../lib/posts';
+import { profile } from '../data/site';
+import { ui } from '../data/ui';
 import { Section } from '../components/ui/Section';
 import { Reveal } from '../components/ui/Reveal';
 import { PostCard } from '../components/ui/PostCard';
@@ -17,21 +19,21 @@ export function BlogPreview() {
   return (
     <Section
       id="blog"
-      eyebrow="writing"
-      title="blog"
-      description="Notes on testing, tooling and the parts of quality work that are not code."
+      eyebrow={ui.blog.eyebrow}
+      title={ui.blog.title}
+      description={ui.blog.description}
     >
       <Reveal.Group className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {recentPosts.map((post) => (
           <Reveal.Item key={post.slug}>
-            <PostCard post={post} />
+            <PostCard post={post} locale={profile.locale} />
           </Reveal.Item>
         ))}
       </Reveal.Group>
 
       <Reveal className="mt-10 flex justify-center">
         <Button to="/blog" variant="outline">
-          Read all posts
+          {ui.blog.readAll}
           <ArrowRightIcon className="size-4" />
         </Button>
       </Reveal>

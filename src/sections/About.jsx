@@ -7,6 +7,7 @@ import { Tag } from '../components/ui/Tag';
 import { ArrowRightIcon, MapPinIcon } from '../components/icons';
 import { fadeUp, staggerContainer, whenInView } from '../lib/motion';
 import aboutPortrait from '../assets/about-portrait.png';
+import { ui } from '../data/ui';
 
 /**
  * About: the personal half of the site.
@@ -31,7 +32,7 @@ export function About() {
               variants={fadeUp}
               className="font-mono text-xs tracking-[0.2em] text-accent uppercase"
             >
-              about
+              {ui.about.eyebrow}
             </motion.p>
 
             <motion.h2
@@ -74,7 +75,7 @@ export function About() {
               className="mt-10 flex flex-wrap items-center gap-4"
             >
               <Button href="#contact">
-                Get in touch
+                {ui.about.contact}
                 <ArrowRightIcon className="size-4" />
               </Button>
 
@@ -87,7 +88,7 @@ export function About() {
 
           <Portrait
             src={aboutPortrait}
-            alt="Illustration of two characters holding hands"
+            alt={ui.about.portraitAlt}
             ratio="wide"
             floatOffset={8}
             className="mx-auto w-full max-w-lg"

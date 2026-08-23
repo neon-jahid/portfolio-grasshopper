@@ -2,6 +2,7 @@ import { Card } from './Card';
 import { Tag, TagList } from './Tag';
 import { ArrowUpRightIcon, GithubIcon } from '../icons';
 import { cn } from '../../lib/utils';
+import { ui } from '../../data/ui';
 
 /**
  * Renders one project.
@@ -19,11 +20,11 @@ export function ProjectCard({ project, featured = false }) {
 
   /** Only render links that actually have a URL. */
   const availableLinks = [
-    links?.repo && { href: links.repo, label: 'Code', icon: GithubIcon },
-    links?.live && { href: links.live, label: 'Live', icon: ArrowUpRightIcon },
+    links?.repo && { href: links.repo, label: ui.projects.code, icon: GithubIcon },
+    links?.live && { href: links.live, label: ui.projects.live, icon: ArrowUpRightIcon },
     links?.caseStudy && {
       href: links.caseStudy,
-      label: 'Case study',
+      label: ui.projects.caseStudy,
       icon: ArrowUpRightIcon,
     },
   ].filter(Boolean);

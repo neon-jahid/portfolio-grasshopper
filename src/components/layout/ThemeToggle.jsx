@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useTheme } from '../../hooks/useTheme';
 import { MoonIcon, SunIcon } from '../icons';
 import { cn } from '../../lib/utils';
+import { ui } from '../../data/ui';
 
 /**
  * Light/dark switch. The two icons cross-fade and rotate through each other
@@ -10,13 +11,14 @@ import { cn } from '../../lib/utils';
 export function ThemeToggle({ className }) {
   const { theme, toggleTheme } = useTheme();
   const isDark = theme === 'dark';
+  const label = isDark ? ui.chrome.themeToLight : ui.chrome.themeToDark;
 
   return (
     <button
       type="button"
       onClick={toggleTheme}
-      aria-label={`Switch to ${isDark ? 'light' : 'dark'} theme`}
-      title={`Switch to ${isDark ? 'light' : 'dark'} theme`}
+      aria-label={label}
+      title={label}
       className={cn(
         'relative grid size-10 place-items-center rounded-full border border-line',
         'text-muted transition-colors duration-300 hover:border-accent hover:text-accent',

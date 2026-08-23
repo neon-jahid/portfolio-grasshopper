@@ -2,6 +2,7 @@ import { featuredProjects, otherProjects } from '../data/projects';
 import { Section } from '../components/ui/Section';
 import { Reveal } from '../components/ui/Reveal';
 import { ProjectCard } from '../components/ui/ProjectCard';
+import { ui } from '../data/ui';
 
 /**
  * Projects: featured work in a two-column grid, everything else below it in a
@@ -11,9 +12,9 @@ export function Projects() {
   return (
     <Section
       id="projects"
-      eyebrow="selected work"
-      title="projects"
-      description="Test suites, tooling and strategy work. Swap these for your own once you have case studies to link."
+      eyebrow={ui.projects.eyebrow}
+      title={ui.projects.title}
+      description={ui.projects.description}
     >
       <Reveal.Group className="grid gap-5 lg:grid-cols-2">
         {featuredProjects.map((project) => (
@@ -26,7 +27,7 @@ export function Projects() {
       {otherProjects.length > 0 && (
         <>
           <h3 className="mt-14 mb-5 font-mono text-xs tracking-[0.2em] text-faint uppercase">
-            More work
+            {ui.projects.more}
           </h3>
 
           <Reveal.Group className="grid gap-5 sm:grid-cols-2">

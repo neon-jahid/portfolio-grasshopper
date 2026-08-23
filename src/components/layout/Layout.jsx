@@ -7,13 +7,14 @@ import { ScrollProgress } from './ScrollProgress';
 import { BackToTop } from './BackToTop';
 import { ScrollManager } from './ScrollManager';
 import { PageBackground } from './PageBackground';
+import { ui } from '../../data/ui';
 
 /** Shown while a lazily-loaded page is being fetched. */
 function PageFallback() {
   return (
     <div className="grid min-h-[60vh] place-items-center" role="status">
       <span className="size-8 animate-spin rounded-full border-2 border-line border-t-accent" />
-      <span className="sr-only">Loading…</span>
+      <span className="sr-only">{ui.chrome.loading}</span>
     </div>
   );
 }
@@ -43,7 +44,7 @@ export function Layout() {
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-accent focus:px-5 focus:py-2 focus:text-accent-contrast"
       >
-        Skip to content
+        {ui.chrome.skipToContent}
       </a>
 
       <Header />

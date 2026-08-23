@@ -6,6 +6,7 @@ import { Portrait } from '../components/ui/Portrait';
 import { ArrowRightIcon, DownloadIcon, Icon } from '../components/icons';
 import { fadeUp, staggerContainer } from '../lib/motion';
 import heroPortrait from '../assets/hero-portrait.png';
+import { ui } from '../data/ui';
 
 /**
  * Landing panel: introduction on the left, character illustration on the
@@ -67,13 +68,13 @@ export function Hero() {
               className="mt-10 flex flex-wrap items-center gap-3"
             >
               <Button href="#contact">
-                Get in touch
+                {ui.hero.contact}
                 <ArrowRightIcon className="size-4" />
               </Button>
 
               <Button href={profile.resumeUrl} variant="outline" download>
                 <DownloadIcon className="size-4" />
-                Résumé
+                {ui.hero.resume}
               </Button>
 
               <ul className="ml-1 flex gap-2">
@@ -96,7 +97,7 @@ export function Hero() {
 
           <Portrait
             src={heroPortrait}
-            alt={`Illustrated character representing ${profile.name}`}
+            alt={ui.hero.portraitAlt(profile.name)}
             priority
             className="mx-auto w-full max-w-xs lg:max-w-sm"
           />

@@ -9,6 +9,7 @@ import { MobileMenu } from './MobileMenu';
 import { MenuIcon } from '../icons';
 import { cn } from '../../lib/utils';
 import { EASE } from '../../lib/motion';
+import { ui } from '../../data/ui';
 
 /**
  * Sticky site header: wordmark, section nav, theme toggle and the mobile
@@ -66,7 +67,7 @@ export function Header() {
             <span className="text-accent">/&gt;</span>
           </Link>
 
-          <nav aria-label="Primary" className="hidden md:block">
+          <nav aria-label={ui.chrome.navPrimary} className="hidden md:block">
             <ul className="flex items-center gap-1">
               {navLinks.map((link) => {
                 const active = isLinkActive(link.href);
@@ -103,7 +104,7 @@ export function Header() {
             <button
               type="button"
               onClick={() => setIsMenuOpen(true)}
-              aria-label="Open menu"
+              aria-label={ui.chrome.openMenu}
               aria-expanded={isMenuOpen}
               className="grid size-10 place-items-center rounded-full border border-line text-muted transition-colors hover:border-accent hover:text-accent md:hidden"
             >

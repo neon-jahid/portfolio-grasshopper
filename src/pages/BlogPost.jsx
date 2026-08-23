@@ -8,7 +8,8 @@ import { Reveal } from '../components/ui/Reveal';
 import { ReadingProgress } from '../components/ui/ReadingProgress';
 import { ArrowLeftIcon, CalendarIcon, ClockIcon } from '../components/icons';
 import { usePageMeta } from '../hooks/usePageMeta';
-import { formatDate } from '../lib/utils';
+import { formatDate, toBanglaDigits } from '../lib/utils';
+import { ui } from '../data/ui';
 import { pageTransition } from '../lib/motion';
 import { profile } from '../data/site';
 
@@ -24,7 +25,7 @@ export default function BlogPost() {
   const post = getPostBySlug(slug);
 
   usePageMeta({
-    title: post ? `${post.title} — ${profile.name}` : 'Post not found',
+    title: post ? `${post.title} — ${profile.name}` : ui.blog.notFoundTitle,
     description: post?.excerpt,
   });
 
@@ -43,7 +44,7 @@ export default function BlogPost() {
           className="inline-flex items-center gap-2 font-mono text-xs text-muted transition-colors hover:text-accent"
         >
           <ArrowLeftIcon className="size-4" />
-          Back to all posts
+          {ui.blog.backToAll}
         </Link>
 
         <header className="mt-8 border-b border-line pb-8">
@@ -52,14 +53,14 @@ export default function BlogPost() {
           <div className="mt-4 flex flex-wrap items-center gap-3 font-mono text-xs text-faint">
             <span className="inline-flex items-center gap-1.5">
               <CalendarIcon className="size-3.5" />
-              <time dateTime={post.date}>{formatDate(post.date)}</time>
+              <time dateTime={post.date}>{formatDate(post.date, profile.locale)}</time>
             </span>
 
             <span aria-hidden="true">·</span>
 
             <span className="inline-flex items-center gap-1.5">
               <ClockIcon className="size-3.5" />
-              {post.readingTime} min read
+              {ui.blog.readingTime(toBanglaDigits(post.readingTime))}
             </span>
           </div>
 
@@ -84,13 +85,13 @@ export default function BlogPost() {
       {relatedPosts.length > 0 && (
         <Container className="pb-24">
           <h2 className="mb-6 font-mono text-xs tracking-[0.2em] text-faint uppercase">
-            Related reading
+            {ui.blog.related}
           </h2>
 
           <Reveal.Group className="grid gap-5 sm:grid-cols-2">
             {relatedPosts.map((related) => (
               <Reveal.Item key={related.slug}>
-                <PostCard post={related} />
+                <PostCard post={related} locale={profile.locale} />
               </Reveal.Item>
             ))}
           </Reveal.Group>

@@ -4,20 +4,21 @@ import { Timeline } from '../components/ui/Timeline';
 import { Card } from '../components/ui/Card';
 import { Reveal } from '../components/ui/Reveal';
 import { CheckIcon } from '../components/icons';
+import { ui } from '../data/ui';
 
 /** Experience: work timeline on the left, education and certificates beside it. */
 export function Experience() {
   return (
     <Section
       id="experience"
-      eyebrow="the path so far"
-      title="experience"
-      description="Where I have worked, what I studied, and the certifications behind it."
+      eyebrow={ui.experience.eyebrow}
+      title={ui.experience.title}
+      description={ui.experience.description}
     >
       <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr] lg:gap-16">
         <div>
           <h3 className="mb-6 font-mono text-xs tracking-[0.2em] text-faint uppercase">
-            Work
+            {ui.experience.work}
           </h3>
           <Timeline items={experience} />
         </div>
@@ -25,7 +26,7 @@ export function Experience() {
         <div className="space-y-10">
           <div>
             <h3 className="mb-6 font-mono text-xs tracking-[0.2em] text-faint uppercase">
-              Education
+              {ui.experience.education}
             </h3>
             <Timeline items={education} />
           </div>
@@ -33,7 +34,7 @@ export function Experience() {
           {certifications.length > 0 && (
             <div>
               <h3 className="mb-6 font-mono text-xs tracking-[0.2em] text-faint uppercase">
-                Certifications
+                {ui.experience.certifications}
               </h3>
 
               <Reveal.Group className="space-y-3">

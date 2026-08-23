@@ -7,7 +7,8 @@ import { Reveal } from '../components/ui/Reveal';
 import { SearchIcon } from '../components/icons';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { profile } from '../data/site';
-import { cn } from '../lib/utils';
+import { cn, toBanglaDigits } from '../lib/utils';
+import { ui } from '../data/ui';
 import { EASE, pageTransition } from '../lib/motion';
 
 /**
@@ -21,8 +22,8 @@ export default function Blog() {
   const [activeTag, setActiveTag] = useState('all');
 
   usePageMeta({
-    title: `Blog — ${profile.name}`,
-    description: `Articles on software testing and quality engineering by ${profile.name}.`,
+    title: `${ui.blog.title} — ${profile.name}`,
+    description: ui.blog.description,
   });
 
   const visiblePosts = useMemo(
@@ -35,25 +36,26 @@ export default function Blog() {
       <Container className="py-20">
         <header className="max-w-2xl">
           <p className="font-mono text-xs tracking-[0.2em] text-accent uppercase">
-            Writing
+            {ui.blog.eyebrow}
           </p>
-          <h1 className="mt-3 text-4xl font-semibold sm:text-5xl">blog</h1>
+          <h1 className="mt-3 text-4xl font-semibold sm:text-5xl">
+            {ui.blog.title}
+          </h1>
           <p className="mt-4 text-lg text-muted">
-            Notes on testing, tooling and the parts of quality work that are not
-            code. {posts.length} {posts.length === 1 ? 'post' : 'posts'} so far.
+            {ui.blog.description} {ui.blog.total(toBanglaDigits(posts.length))}
           </p>
         </header>
 
         {/* Controls */}
         <div className="mt-10 flex flex-col gap-4 border-y border-line py-5 lg:flex-row lg:items-center lg:justify-between">
           <label className="relative w-full max-w-sm">
-            <span className="sr-only">Search posts</span>
+            <span className="sr-only">{ui.blog.searchLabel}</span>
             <SearchIcon className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-faint" />
             <input
               type="search"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search posts…"
+              placeholder={ui.blog.searchPlaceholder}
               className="h-11 w-full rounded-full border border-line bg-surface pl-11 pr-4 text-sm text-ink placeholder:text-faint focus:border-accent focus:outline-none"
             />
           </label>
@@ -83,7 +85,7 @@ export default function Blog() {
                           transition={{ duration: 0.3, ease: EASE }}
                         />
                       )}
-                      {tag === 'all' ? 'all' : `#${tag}`}
+                      {tag === 'all' ? ui.blog.allFilter : `#${tag}`}
                     </button>
                   </li>
                 );
@@ -96,15 +98,12 @@ export default function Blog() {
           <Reveal.Group className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {visiblePosts.map((post) => (
               <Reveal.Item key={post.slug}>
-                <PostCard post={post} />
+                <PostCard post={post} locale={profile.locale} />
               </Reveal.Item>
             ))}
           </Reveal.Group>
         ) : (
-          <p className="mt-16 text-center text-muted">
-            No posts match that search. Try a different term or clear the tag
-            filter.
-          </p>
+          <p className="mt-16 text-center text-muted">{ui.blog.empty}</p>
         )}
       </Container>
     </motion.div>

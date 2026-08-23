@@ -4,6 +4,7 @@ import { Card } from '../components/ui/Card';
 import { Reveal } from '../components/ui/Reveal';
 import { SkillMeter } from '../components/ui/SkillMeter';
 import { Icon } from '../components/icons';
+import { ui } from '../data/ui';
 
 /**
  * Skills: one card per group, each listing its skills as animated meters.
@@ -13,9 +14,9 @@ export function Skills() {
   return (
     <Section
       id="skills"
-      eyebrow="what I use"
-      title="skills"
-      description="The toolkit I reach for, grouped by the part of the job it belongs to."
+      eyebrow={ui.skills.eyebrow}
+      title={ui.skills.title}
+      description={ui.skills.description}
     >
       <Reveal.Group className="grid gap-5 sm:grid-cols-2">
         {skillGroups.map((group) => (

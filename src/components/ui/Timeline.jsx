@@ -1,5 +1,6 @@
 import { Reveal } from './Reveal';
 import { cn } from '../../lib/utils';
+import { ui } from '../../data/ui';
 
 /**
  * Vertical timeline used for both work history and education.
@@ -23,7 +24,7 @@ export function Timeline({ items, className }) {
           />
 
           <p className="font-mono text-xs text-faint">
-            {item.start} — {item.end ?? 'Present'}
+            {item.start} — {item.end ?? ui.experience.present}
           </p>
 
           <h3 className="mt-1 text-lg font-semibold">{item.role}</h3>

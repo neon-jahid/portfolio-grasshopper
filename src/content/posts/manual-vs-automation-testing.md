@@ -1,64 +1,64 @@
 ---
-title: Manual or Automated? The Wrong Question
+title: ম্যানুয়াল নাকি অটোমেশন? প্রশ্নটাই ভুল
 date: 2026-04-21
-excerpt: Automation is not a better version of manual testing. They answer different questions. Here is the split I use when deciding what to automate and what to keep in human hands.
-tags: [strategy, automation, manual-testing]
+excerpt: অটোমেশন ম্যানুয়াল টেস্টিংয়ের উন্নত সংস্করণ না। দুটো দুই রকম প্রশ্নের উত্তর দেয়। কোনটা অটোমেট করব আর কোনটা হাতে রাখব — সেটা আমি যেভাবে ভাগ করি।
+tags: [স্ট্র্যাটেজি, অটোমেশন, ম্যানুয়াল-টেস্টিং]
 draft: false
 ---
 
-"Should we automate this?" is usually asked as if automation were simply manual testing done faster. It is not. The two answer different questions, and treating one as an upgrade of the other produces suites that are expensive to maintain and still miss the interesting bugs.
+"এটা কি অটোমেট করে ফেলব?" — প্রশ্নটা সাধারণত এমনভাবে করা হয় যেন অটোমেশন মানে ম্যানুয়াল টেস্টিংটাই একটু দ্রুত করা। ব্যাপারটা তা না। দুটো দুই রকম প্রশ্নের উত্তর দেয়, আর একটাকে আরেকটার আপগ্রেড ভাবলে যে স্যুটটা দাঁড়ায় সেটা মেইনটেইন করতে খরচ বেশি, অথচ মজার বাগগুলো তাও ধরা পড়ে না।
 
-## What each one is actually good at
+## কোনটা আসলে কোন কাজে ভালো
 
-**Automation answers: has this changed?** It runs the same path the same way and tells you when the result differs. It is tireless, exact and completely incurious.
+**অটোমেশন উত্তর দেয়: কিছু বদলেছে কি?** একই পথে একইভাবে হেঁটে যায়, আর ফল আলাদা হলে জানিয়ে দেয়। ক্লান্তি নেই, নির্ভুল, আর কৌতূহল একেবারেই শূন্য।
 
-**Manual testing answers: is this any good?** A person notices that the button works but sits below the fold on a phone, that the error message blames the user, that the flow makes sense for a new account but not for a returning one.
+**ম্যানুয়াল টেস্টিং উত্তর দেয়: জিনিসটা আদৌ ভালো হয়েছে কি?** একজন মানুষই খেয়াল করে যে বাটনটা কাজ তো করছে, কিন্তু ফোনে স্ক্রলের নিচে পড়ে গেছে; এরর মেসেজটা দোষ চাপাচ্ছে ইউজারের ঘাড়ে; ফ্লোটা নতুন অ্যাকাউন্টের জন্য ঠিক আছে, কিন্তু পুরোনো ইউজারের জন্য না।
 
-Automation protects what you already understand. Manual testing is how you come to understand it.
+অটোমেশন যা আপনি ইতিমধ্যে বোঝেন সেটা পাহারা দেয়। ম্যানুয়াল টেস্টিং দিয়েই আপনি জিনিসটা বুঝতে শেখেন।
 
-## The split I use
+## আমি যেভাবে ভাগ করি
 
-Automate when the check is:
+অটোমেট করি, যখন চেকটা —
 
-- **Repeated** — runs every release, or every pull request
-- **Deterministic** — same input, same output, no judgement needed
-- **Expensive to do by hand** — long forms, many data permutations, cross-browser
-- **Stable** — the flow has settled and is not being redesigned next sprint
+- **বারবার লাগে** — প্রতি রিলিজে, বা প্রতি পুল রিকোয়েস্টে চলে
+- **নির্দিষ্ট ফল দেয়** — একই ইনপুটে একই আউটপুট, বিচারবুদ্ধি লাগে না
+- **হাতে করতে খরচ বেশি** — লম্বা ফর্ম, অনেক রকম ডেটার কম্বিনেশন, ক্রস-ব্রাউজার
+- **থিতু হয়েছে** — ফ্লোটা দাঁড়িয়ে গেছে, সামনের স্প্রিন্টেই নতুন করে ডিজাইন হচ্ছে না
 
-Keep it manual when the check is:
+হাতে রাখি, যখন চেকটা —
 
-- **New** — the feature just landed and nobody has used it in anger yet
-- **Subjective** — layout, wording, whether the experience feels right
-- **Rare** — a migration you will run once
-- **Volatile** — the UI changes weekly and the test would break more often than the feature
+- **নতুন** — ফিচারটা সবে এসেছে, কেউ এখনো সেভাবে ব্যবহার করে দেখেনি
+- **বিচারনির্ভর** — লেআউট, শব্দচয়ন, অভিজ্ঞতাটা ঠিক লাগছে কি না
+- **কালেভদ্রে লাগে** — যে মাইগ্রেশন জীবনে একবারই চালাবেন
+- **অস্থির** — UI প্রতি সপ্তাহে বদলায়, টেস্টটা ফিচারের চেয়ে বেশিবার ভাঙবে
 
-## The trap: automating too early
+## ফাঁদ এক: খুব তাড়াতাড়ি অটোমেট করা
 
-A test written against a screen that is still being designed will be rewritten three times before release. Each rewrite costs more than the manual pass it replaced.
+যে স্ক্রিনের ডিজাইনই এখনো চলছে, তার বিপরীতে লেখা টেস্ট রিলিজের আগেই তিনবার নতুন করে লিখতে হবে। প্রতিবার নতুন করে লেখার খরচ, যে ম্যানুয়াল পাসটা এটা বাঁচাচ্ছিল তার চেয়ে বেশি।
 
-My rule: a flow earns an automated test after it ships and survives one round of feedback. Before that, explore it by hand — that is where the design bugs live anyway.
+আমার নিয়মটা সোজা: একটা ফ্লো অটোমেটেড টেস্ট পাওয়ার যোগ্য হয় শিপ করার পর, এক দফা ফিডব্যাক সামলে ওঠার পর। তার আগ পর্যন্ত হাতে ঘেঁটে দেখুন — ডিজাইনের বাগগুলো তো ওখানেই থাকে।
 
-## The other trap: never revisiting the suite
+## ফাঁদ দুই: স্যুটের দিকে আর ফিরে না তাকানো
 
-An automated suite is code, and code rots. Tests that fail intermittently get rerun until they pass, which is the same as deleting them but slower. Once a team stops trusting a red build, the suite has stopped working regardless of how many tests it contains.
+অটোমেটেড স্যুটও কোড, আর কোড পচে। যে টেস্ট মাঝেমধ্যে ফেল করে সেটাকে পাস না করা পর্যন্ত বারবার চালানো হয় — এটা কার্যত টেস্টটা মুছে ফেলারই সমান, শুধু ধীরে। দল একবার লাল বিল্ডকে বিশ্বাস করা ছেড়ে দিলে স্যুটে কয়টা টেস্ট আছে তাতে আর কিছু যায় আসে না।
 
-Budget time to delete tests. A suite of 60 checks that always tells the truth is worth more than 400 that mostly do.
+টেস্ট মুছে ফেলার জন্যও সময় রাখুন। যে ৬০টা চেক সবসময় সত্যি কথা বলে, তার দাম মোটামুটি সত্যি বলা ৪০০টার চেয়ে বেশি।
 
-## A concrete example
+## একটা বাস্তব উদাহরণ
 
-For a checkout flow:
+একটা চেকআউট ফ্লোর ক্ষেত্রে:
 
-| Check | Where it belongs |
+| চেক | কোথায় রাখব |
 | --- | --- |
-| Payment succeeds with a valid card | Automated — runs every build |
-| Card declines show the right message | Automated — deterministic, many cases |
-| Total recalculates on address change | Automated — pure logic |
-| Checkout on a small phone with a long address | Manual — judgement about layout |
-| Behaviour when the network drops mid-payment | Manual first, automated once understood |
-| Whether the flow feels trustworthy | Manual, always |
+| ঠিক কার্ডে পেমেন্ট হয়ে যাচ্ছে | অটোমেটেড — প্রতি বিল্ডে চলবে |
+| কার্ড ডিক্লাইনে সঠিক মেসেজ আসছে | অটোমেটেড — নির্দিষ্ট ফল, অনেকগুলো কেস |
+| ঠিকানা বদলালে টোটাল আবার হিসাব হচ্ছে | অটোমেটেড — পুরোটাই লজিক |
+| ছোট ফোনে লম্বা ঠিকানা দিয়ে চেকআউট | ম্যানুয়াল — লেআউট নিয়ে বিচার লাগে |
+| পেমেন্টের মাঝপথে নেট চলে গেলে কী হয় | প্রথমে ম্যানুয়াল, বুঝে ফেললে অটোমেটেড |
+| ফ্লোটা ভরসা করার মতো লাগছে কি না | সবসময় ম্যানুয়াল |
 
-## The real question
+## আসল প্রশ্নটা
 
-Not "manual or automated" but **what do I want to know?** If the answer is "that nothing broke", automate it. If the answer is "whether this is any good", go and use the thing.
+"ম্যানুয়াল নাকি অটোমেশন" না, আসল প্রশ্ন হলো — **আমি কী জানতে চাই?** উত্তর যদি হয় "কিছু ভাঙেনি তো", অটোমেট করুন। উত্তর যদি হয় "জিনিসটা আদৌ ভালো হয়েছে কি না", তাহলে গিয়ে জিনিসটা ব্যবহার করুন।
 
-Most teams need both, in roughly that order.
+বেশিরভাগ দলেরই দুটোই লাগে, মোটামুটি এই ক্রমেই।

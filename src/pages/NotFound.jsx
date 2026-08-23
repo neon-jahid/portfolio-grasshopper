@@ -4,10 +4,11 @@ import { Button } from '../components/ui/Button';
 import { ArrowLeftIcon, BugIcon } from '../components/icons';
 import { usePageMeta } from '../hooks/usePageMeta';
 import { pageTransition } from '../lib/motion';
+import { ui } from '../data/ui';
 
 /** 404 page. */
 export default function NotFound() {
-  usePageMeta({ title: 'Page not found' });
+  usePageMeta({ title: ui.notFound.metaTitle });
 
   return (
     <motion.div {...pageTransition}>
@@ -16,20 +17,19 @@ export default function NotFound() {
           <BugIcon className="size-8" />
         </span>
 
-        <p className="mt-8 font-mono text-sm text-accent">Error 404</p>
+        <p className="mt-8 font-mono text-sm text-accent">{ui.notFound.code}</p>
 
         <h1 className="mt-3 text-3xl font-semibold sm:text-4xl">
-          This page could not be reproduced
+          {ui.notFound.heading}
         </h1>
 
         <p className="mt-4 max-w-md text-muted">
-          The address does not match anything on this site. It may have moved,
-          or the link may be wrong.
+          {ui.notFound.body}
         </p>
 
         <Button to="/" className="mt-8">
           <ArrowLeftIcon className="size-4" />
-          Back to home
+          {ui.notFound.backHome}
         </Button>
       </Container>
     </motion.div>

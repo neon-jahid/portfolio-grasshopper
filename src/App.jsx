@@ -7,6 +7,7 @@ import { Layout } from './components/layout/Layout';
  * downloads the blog's markdown renderer, and vice versa.
  */
 const Home = lazy(() => import('./pages/Home'));
+const Photos = lazy(() => import('./pages/Photos'));
 const Blog = lazy(() => import('./pages/Blog'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
 const NotFound = lazy(() => import('./pages/NotFound'));
@@ -22,6 +23,7 @@ export default function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<Home />} />
+        <Route path="photos" element={<Photos />} />
         <Route path="blog" element={<Blog />} />
         <Route path="blog/:slug" element={<BlogPost />} />
         <Route path="404" element={<NotFound />} />

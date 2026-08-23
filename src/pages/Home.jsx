@@ -2,6 +2,9 @@ import { motion } from 'framer-motion';
 import { Hero } from '../sections/Hero';
 import { About } from '../sections/About';
 import { Professional } from '../sections/Professional';
+import { PhotographyPreview } from '../sections/PhotographyPreview';
+import { Interests } from '../sections/Interests';
+import { Testimonials } from '../sections/Testimonials';
 import { Skills } from '../sections/Skills';
 import { Projects } from '../sections/Projects';
 import { Experience } from '../sections/Experience';
@@ -19,6 +22,9 @@ import { pageTransition } from '../lib/motion';
 const SECTION_COMPONENTS = {
   about: About,
   work: Professional,
+  photography: PhotographyPreview,
+  interests: Interests,
+  testimonials: Testimonials,
   skills: Skills,
   projects: Projects,
   experience: Experience,

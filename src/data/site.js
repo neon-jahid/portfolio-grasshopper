@@ -3,20 +3,28 @@
  *
  * This file is the single source of truth for "who is this site about" and
  * "which sections does the home page show". Edit here, not in components.
+ *
+ * The copy is Bangla. The interface's own words — buttons, empty states,
+ * section headings — live in data/ui.js.
  */
 
 export const profile = {
-  name: 'Jahid Hasan',
-  role: 'SQA Engineer',
-  greeting: 'Hello, I am',
-  /** One line under the hero heading. */
-  tagline: 'I break software on purpose so your users never have to.',
-  location: 'Dhaka, Bangladesh',
-  email: 'zh08215@gmail.com',
-  /** Drop your CV into /public and point this at it. */
-  resumeUrl: '/resume.pdf',
-  /** Availability pill in the hero. Set to '' to hide it. */
-  availability: 'Open to new opportunities',
+    name: 'জাহিদ হাসান',
+    role: 'মিস্টার ঘাসফড়িং',
+    greeting: 'হ্যালো, আমি',
+    /** One line under the hero heading. */
+    tagline: 'সুখের বদলে বাগ খুঁজে বেড়ানো এক ক্লান্ত ইঞ্জিনিয়ার।',
+    location: 'ঢাকা, বাংলাদেশ',
+    email: 'zh08215@gmail.com',
+    /** Drop your CV into /public and point this at it. */
+    resumeUrl: '/resume.pdf',
+    /** Availability pill in the hero. Set to '' to hide it. */
+    availability: 'নতুন সুযোগের খোঁজে আছি',
+    /**
+     * BCP 47 tag, used to format dates. 'bn-BD' renders them in Bengali,
+     * numerals included — keep it in step with <html lang> in index.html.
+     */
+    locale: 'bn-BD',
 };
 
 /**
@@ -25,20 +33,14 @@ export const profile = {
  * `headline` renders on two lines, the second in the accent gradient.
  */
 export const personal = {
-  headline: { first: 'Jahid Hasan', second: 'Personal Life' },
-  lead: 'Beyond the code and the breaking of software, I find balance and joy in life’s simpler, shared moments.',
-  paragraphs: [
-    'When I am not debugging or picking a feature apart, you will usually find me spending time with the people close to me — long walks, a good local cafe, and conversations that have nothing to do with release cycles.',
-    'I am happiest outdoors, curious about vintage animation, and a firm believer that a full life outside work is what keeps the curiosity alive inside it.',
-  ],
-  /** Small chips under the copy. Keep them light and human. */
-  interests: [
-    'The outdoors',
-    'Local cafés',
-    'Vintage animation',
-    'Long walks',
-    'Photography',
-  ],
+    headline: { first: 'জাহিদ হাসান', second: 'ব্যক্তিগত জীবন' },
+    lead: 'কোড আর সফটওয়্যার ভাঙাভাঙির বাইরেও একটা জীবন আছে — ছোট ছোট, ভাগ করে নেওয়া মুহূর্তগুলোতেই আসল আনন্দটা।',
+    paragraphs: [
+        'ডিবাগিং বা কোনো ফিচার খুঁটিয়ে দেখার কাজ না থাকলে সাধারণত কাছের মানুষগুলোর সাথেই সময় কাটে — লম্বা হাঁটা, পাড়ার একটা ভালো ক্যাফে, আর এমন সব আড্ডা যার সাথে রিলিজ সাইকেলের কোনো সম্পর্ক নেই।',
+        'বাইরে ঘুরতে সবচেয়ে ভালো লাগে, পুরোনো দিনের অ্যানিমেশন নিয়ে আগ্রহ আছে, আর আমি মনে করি — কাজের বাইরের জীবনটা ভরাট থাকলেই কাজের ভেতরের কৌতূহলটা বেঁচে থাকে।',
+    ],
+    /** Small chips under the copy. Keep them light and human. */
+    interests: ['বাইরে ঘোরা', 'পাড়ার ক্যাফে', 'পুরোনো অ্যানিমেশন', 'লম্বা হাঁটা', 'ফটোগ্রাফি'],
 };
 
 /**
@@ -49,16 +51,16 @@ export const personal = {
  * switched on below.
  */
 export const professional = {
-  summary:
-    'By day I am a Software Quality Assurance Engineer. I plan and run the testing that decides whether a release ships — exploratory passes by hand, automated regression suites, and API checks that catch breakage before anyone sees it.',
-  /** Three at most; the layout is built for a short row. */
-  focus: [
-    { id: 'manual', label: 'Manual & exploratory testing', icon: 'checklist' },
-    { id: 'automation', label: 'Test automation', icon: 'robot' },
-    { id: 'api', label: 'API & performance testing', icon: 'pulse' },
-  ],
-  /** Where to send anyone who wants the long version. */
-  cta: { label: 'Download résumé', href: '/resume.pdf' },
+    summary:
+        'দিনের বেলায় আমি একজন সফটওয়্যার কোয়ালিটি অ্যাসিওরেন্স ইঞ্জিনিয়ার। কোনো রিলিজ যাবে কি যাবে না — সেই সিদ্ধান্তের পেছনের টেস্টিংটা আমিই প্ল্যান করি আর চালাই: হাতে ধরে এক্সপ্লোরেটরি টেস্ট, অটোমেটেড রিগ্রেশন স্যুট, আর API চেক, যাতে সমস্যাগুলো ইউজারের চোখে পড়ার আগেই ধরা পড়ে।',
+    /** Three at most; the layout is built for a short row. */
+    focus: [
+        { id: 'manual', label: 'ম্যানুয়াল ও এক্সপ্লোরেটরি টেস্টিং', icon: 'checklist' },
+        { id: 'automation', label: 'টেস্ট অটোমেশন', icon: 'robot' },
+        { id: 'api', label: 'API ও পারফরম্যান্স টেস্টিং', icon: 'pulse' },
+    ],
+    /** Where to send anyone who wants the long version. */
+    cta: { label: 'সিভি ডাউনলোড করুন', href: '/resume.pdf' },
 };
 
 /**
@@ -67,15 +69,22 @@ export const professional = {
  * Order here is the order on the page, and `enabled` controls both rendering
  * and the navigation. The professional sections are switched off by default
  * to keep this a personal site — flip one to `true` to bring it back.
+ *
+ * `href` is optional. Sections that also have a page of their own — photos,
+ * the blog — point their nav link at that page instead of the home-page
+ * anchor, while still rendering a teaser section on the way down.
  */
 export const sections = [
-  { id: 'about', label: 'about', enabled: true },
-  { id: 'work', label: 'work', enabled: true },
-  { id: 'skills', label: 'skills', enabled: false },
-  { id: 'projects', label: 'projects', enabled: false },
-  { id: 'experience', label: 'experience', enabled: false },
-  { id: 'blog', label: 'blog', enabled: true },
-  { id: 'contact', label: 'contact', enabled: true },
+    { id: 'about', label: 'পরিচিতি', enabled: true },
+    { id: 'work', label: 'কাজ', enabled: true },
+    { id: 'photography', label: 'ছবি', enabled: true, href: '/photos' },
+    { id: 'interests', label: 'শখ', enabled: true },
+    { id: 'skills', label: 'দক্ষতা', enabled: false },
+    { id: 'projects', label: 'প্রজেক্ট', enabled: false },
+    { id: 'experience', label: 'অভিজ্ঞতা', enabled: false },
+    { id: 'testimonials', label: 'মতামত', enabled: false },
+    { id: 'blog', label: 'ব্লগ', enabled: true, href: '/blog' },
+    { id: 'contact', label: 'যোগাযোগ', enabled: true },
 ];
 
 /** Sections actually rendered, in page order. */
@@ -86,16 +95,16 @@ export const sectionIds = enabledSections.map((section) => section.id);
 
 /**
  * Navigation, derived from the same registry.
- * The blog link points at the archive page rather than the preview section.
+ * Sections with their own page link to it; the rest link to their anchor.
  */
 export const navLinks = enabledSections.map((section) => ({
-  label: section.label,
-  href: section.id === 'blog' ? '/blog' : `/#${section.id}`,
+    label: section.label,
+    href: section.href ?? `/#${section.id}`,
 }));
 
 /** Social profiles. `icon` must match a name exported from components/icons. */
 export const socials = [
-  { label: 'GitHub', href: 'https://github.com/', icon: 'github' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/', icon: 'linkedin' },
-  { label: 'Email', href: 'mailto:zh08215@gmail.com', icon: 'mail' },
+    { label: 'GitHub', href: 'https://github.com/', icon: 'github' },
+    { label: 'LinkedIn', href: 'https://linkedin.com/in/', icon: 'linkedin' },
+    { label: 'ইমেইল', href: 'mailto:zh08215@gmail.com', icon: 'mail' },
 ];

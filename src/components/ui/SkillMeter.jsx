@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { EASE } from '../../lib/motion';
+import { toBanglaDigits } from '../../lib/utils';
 
 /**
  * A labelled proficiency bar that fills when scrolled into view.
@@ -14,7 +15,7 @@ export function SkillMeter({ name, level, delay = 0 }) {
     <li>
       <div className="mb-2 flex items-baseline justify-between gap-3">
         <span className="text-sm text-ink">{name}</span>
-        <span className="font-mono text-xs text-faint">{level}%</span>
+        <span className="font-mono text-xs text-faint">{toBanglaDigits(level)}%</span>
       </div>
 
       <div

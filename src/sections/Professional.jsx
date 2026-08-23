@@ -4,6 +4,7 @@ import { Card } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
 import { Reveal } from '../components/ui/Reveal';
 import { DownloadIcon, Icon } from '../components/icons';
+import { ui } from '../data/ui';
 
 /**
  * The short version of the day job.
@@ -15,7 +16,7 @@ import { DownloadIcon, Icon } from '../components/icons';
  */
 export function Professional() {
   return (
-    <Section id="work" eyebrow="the day job" title="work">
+    <Section id="work" eyebrow={ui.work.eyebrow} title={ui.work.title}>
       <Reveal>
         <Card className="grid gap-8 p-8 sm:p-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
           <div>
@@ -30,7 +31,7 @@ export function Professional() {
               </Button>
 
               <p className="font-mono text-xs text-faint">
-                Currently {profile.role.toLowerCase()} · {profile.location}
+                {ui.work.current(profile.role, profile.location)}
               </p>
             </div>
           </div>

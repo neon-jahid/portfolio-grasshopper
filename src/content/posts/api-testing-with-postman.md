@@ -1,29 +1,29 @@
 ---
-title: A Practical Start to API Testing with Postman
+title: Postman দিয়ে API টেস্টিং শুরু করার কাজের কথা
 date: 2026-06-02
-excerpt: Testing the UI catches what users see. Testing the API catches what breaks before they see it. A walkthrough of the checks I add to every collection, and how to run them in CI.
-tags: [api, postman, automation]
+excerpt: UI টেস্ট করলে ইউজার যা দেখে সেটা ধরা পড়ে। API টেস্ট করলে ইউজারের চোখে পড়ার আগেই ধরা পড়ে। প্রতিটা কালেকশনে আমি যে চেকগুলো রাখি, আর সেগুলো CI-তে কীভাবে চালাই।
+tags: [api, postman, অটোমেশন]
 featured: true
 draft: false
 ---
 
-The UI is the last place a bug shows up and the slowest place to find it. By the time a wrong total renders on a page, the wrong number already crossed a network boundary. Testing there is faster, more stable and far easier to automate.
+বাগ সবচেয়ে শেষে এসে দেখা দেয় UI-তে, আর সেখানেই খুঁজে বের করা সবচেয়ে ধীর। পেজে ভুল টোটালটা দেখানোর অনেক আগেই সংখ্যাটা নেটওয়ার্ক পেরিয়ে চলে এসেছে। ওই স্তরে টেস্ট করা দ্রুত, বেশি স্থিতিশীল, আর অটোমেট করাও অনেক সোজা।
 
-Here is the set of checks I put on every endpoint, and how the collection ends up running itself.
+প্রতিটা এন্ডপয়েন্টে আমি যে চেকগুলো বসাই, আর কালেকশনটা শেষে যেভাবে নিজে নিজেই চলতে শুরু করে — সেটাই এখানে।
 
-## Four checks that belong on every request
+## প্রতিটা রিকোয়েস্টে যে চারটা চেক থাকা উচিত
 
-### 1. Status code
+### ১. স্ট্যাটাস কোড
 
-The cheapest assertion, and the one that catches deploys pointing at the wrong environment.
+সবচেয়ে সস্তা অ্যাসারশন, আর ডিপ্লয় ভুল এনভায়রনমেন্টে গেলে এটাই সবার আগে ধরে।
 
 ```js
 pm.test('responds 200', () => pm.response.to.have.status(200));
 ```
 
-### 2. Response shape
+### ২. রেসপন্সের গড়ন
 
-Status codes lie. A `200` with a missing field is still a broken contract. Assert the schema, not a handful of properties:
+স্ট্যাটাস কোড মিথ্যা বলে। একটা ফিল্ড উধাও হয়ে যাওয়া `200`-ও ভাঙা কন্ট্রাক্ট। গোটাকয়েক প্রপার্টি না মিলিয়ে পুরো স্কিমাটাই যাচাই করুন:
 
 ```js
 const schema = {
@@ -41,11 +41,11 @@ pm.test('matches the user schema', () => {
 });
 ```
 
-This is the check that catches a renamed field before the front end does.
+ফ্রন্ট এন্ড টের পাওয়ার আগেই ফিল্ডের নাম বদলে যাওয়া এই চেকটাই ধরে ফেলে।
 
-### 3. Response time
+### ৩. রেসপন্স টাইম
 
-Not a load test — a smoke alarm. If a call that normally takes 200 ms suddenly takes three seconds, something changed.
+এটা লোড টেস্ট না — স্মোক অ্যালার্ম। যে কলটা সাধারণত ২০০ মিলিসেকেন্ড নেয় সেটা হঠাৎ তিন সেকেন্ড নিলে বুঝতে হবে কিছু একটা বদলেছে।
 
 ```js
 pm.test('responds within budget', () => {
@@ -53,36 +53,36 @@ pm.test('responds within budget', () => {
 });
 ```
 
-### 4. Auth behaviour
+### ৪. অথ ঠিকঠাক কাজ করছে কি না
 
-For every protected endpoint, add the negative case: no token, expired token, wrong role. Authorisation gaps are the defects with the highest cost and the lowest discovery rate through the UI.
+প্রতিটা প্রোটেক্টেড এন্ডপয়েন্টে নেগেটিভ কেসটাও রাখুন: টোকেন ছাড়া, মেয়াদ শেষ হওয়া টোকেন, ভুল রোল। অথরাইজেশনের ফাঁকফোকরগুলোরই খরচ সবচেয়ে বেশি, আর UI ঘেঁটে ধরা পড়ার সম্ভাবনা সবচেয়ে কম।
 
-## Make the collection environment-agnostic
+## কালেকশনটাকে এনভায়রনমেন্ট-নিরপেক্ষ রাখুন
 
-Hardcoded URLs are why collections rot. Use variables for everything that changes between environments:
+হার্ডকোড করা URL-এর কারণেই কালেকশন পচে। এনভায়রনমেন্ট বদলালে যা যা বদলায়, তার সবকিছুর জন্য ভেরিয়েবল ব্যবহার করুন:
 
-| Variable | Dev | Staging |
+| ভেরিয়েবল | ডেভ | স্টেজিং |
 | --- | --- | --- |
 | `baseUrl` | `https://dev.api.example` | `https://staging.api.example` |
 | `authUser` | `qa-dev-01` | `qa-stg-01` |
 
-Requests then read `{{baseUrl}}/v1/users/{{userId}}` and one collection covers every environment.
+তখন রিকোয়েস্টে লেখা থাকে `{{baseUrl}}/v1/users/{{userId}}`, আর একটা কালেকশনেই সব এনভায়রনমেন্ট চলে।
 
-## Chain requests instead of hardcoding ids
+## আইডি হার্ডকোড না করে রিকোয়েস্ট চেইন করুন
 
-A test that depends on user `42` existing is a test that fails on a fresh database. Create what you need, then pass it forward:
+যে টেস্ট `42` নম্বর ইউজার থাকার উপর নির্ভর করে, নতুন ডেটাবেজে সেটা ফেল করবেই। যা দরকার সেটা বানিয়ে নিন, তারপর সামনে পাঠিয়ে দিন:
 
 ```js
-// Tests tab of "Create user"
+// "Create user"-এর Tests ট্যাব
 const body = pm.response.json();
 pm.collectionVariables.set('userId', body.id);
 ```
 
-The next request uses `{{userId}}`. The chain is self-contained and reruns cleanly.
+পরের রিকোয়েস্ট `{{userId}}` ব্যবহার করবে। চেইনটা তখন স্বয়ংসম্পূর্ণ, আর বারবার চালালেও পরিষ্কারভাবে চলে।
 
-## Run it from the command line
+## কমান্ড লাইন থেকে চালান
 
-Once the collection passes locally, Newman runs the same file in CI:
+লোকালি কালেকশন পাস করার পর একই ফাইল Newman দিয়ে CI-তে চলবে:
 
 ```bash
 npx newman run collections/payments-api.json \
@@ -91,10 +91,10 @@ npx newman run collections/payments-api.json \
   --reporter-junit-export results/api.xml
 ```
 
-The JUnit output plugs into most pipelines, so a failing contract fails the build instead of surfacing three sprints later.
+JUnit আউটপুট বেশিরভাগ পাইপলাইনেই লেগে যায়। ফলে কন্ট্রাক্ট ভাঙলে বিল্ডই ফেল করে — তিন স্প্রিন্ট পরে গিয়ে ধরা পড়ার বদলে।
 
-## Where to stop
+## কোথায় থামতে হবে
 
-API tests are not a substitute for exploratory testing, and a green collection does not mean the feature makes sense. What it does mean is that the contract has not silently changed — and that is the class of bug that is hardest to spot by hand.
+API টেস্ট এক্সপ্লোরেটরি টেস্টিংয়ের বিকল্প না, আর সবুজ কালেকশন মানে এই না যে ফিচারটার কোনো মানে হয়েছে। এটা যা বোঝায় তা হলো — কন্ট্রাক্টটা চুপচাপ বদলে যায়নি। আর এই ধরনের বাগই হাতে খুঁজে বের করা সবচেয়ে কঠিন।
 
-Start with the four checks on your busiest endpoint. Add the next endpoint tomorrow.
+আপনার সবচেয়ে ব্যস্ত এন্ডপয়েন্টটায় এই চারটা চেক দিয়ে শুরু করুন। পরের এন্ডপয়েন্টটা কাল।

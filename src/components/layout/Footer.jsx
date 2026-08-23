@@ -2,6 +2,8 @@ import { navLinks, profile, socials } from '../../data/site';
 import { Container } from '../ui/Container';
 import { SmartLink } from '../ui/SmartLink';
 import { Icon } from '../icons';
+import { ui } from '../../data/ui';
+import { toBanglaDigits } from '../../lib/utils';
 
 /** Site footer: navigation repeat, socials and the copyright line. */
 export function Footer() {
@@ -20,7 +22,7 @@ export function Footer() {
             <p className="mt-3 text-sm text-muted">{profile.tagline}</p>
           </div>
 
-          <nav aria-label="Footer">
+          <nav aria-label={ui.chrome.navFooter}>
             <ul className="grid grid-cols-2 gap-x-10 gap-y-2">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -53,7 +55,7 @@ export function Footer() {
         </div>
 
         <p className="mt-10 border-t border-line pt-6 font-mono text-xs text-faint">
-          © {year} {profile.name}. Built with React, Vite and Tailwind CSS.
+          {ui.chrome.copyright(toBanglaDigits(year), profile.name)}
         </p>
       </Container>
     </footer>

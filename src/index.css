@@ -14,9 +14,15 @@
  * rebrand means editing this block and nothing else.
  * ---------------------------------------------------------------------- */
 @theme {
-  /* Typography */
-  --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'Space Mono', ui-monospace, 'SFMono-Regular', monospace;
+  /* Typography
+   * The Bengali face sits *after* the Latin ones in both stacks. Font
+   * fallback is per glyph, so Latin keeps rendering in Poppins / Space Mono
+   * and Bengali drops through to Hind Siliguri on its own — mixed Bangla and
+   * English in one sentence comes out right with nothing tagged. */
+  --font-sans: 'Poppins', 'Hind Siliguri', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Space Mono', 'Hind Siliguri', ui-monospace, 'SFMono-Regular', monospace;
+  /* For text that should be Bengali-first — see the `font-bangla` utility. */
+  --font-bangla: 'Hind Siliguri', 'Noto Sans Bengali', ui-sans-serif, sans-serif;
 
   /* Layout */
   --spacing-section: 7.5rem; /* vertical rhythm between page sections */
@@ -102,6 +108,37 @@
     border-radius: 2px;
   }
 
+  /* -----------------------------------------------------------------------
+   * Bangla / Bengali script
+   *
+   * The font itself is handled by the stack order in @theme above, so text
+   * renders correctly whether or not it is tagged. `lang="bn"` — on <html>
+   * for a Bangla site, or on a span for a Bangla phrase inside English — is
+   * still worth setting, because it fixes the two things font fallback
+   * cannot:
+   *
+   *   - Latin letter-spacing pulls Bengali conjuncts and matras apart. The
+   *     mono eyebrow labels use 0.2em, which mangles Bangla badly.
+   *   - Bengali sits taller than Latin and needs more leading to breathe.
+   *
+   * The letter-spacing reset is !important on purpose: it is a correctness
+   * fix for the script, and a `tracking-*` utility further down the cascade
+   * would otherwise put the gaps straight back.
+   * -------------------------------------------------------------------- */
+  [lang='bn'],
+  [lang='bn'] * {
+    letter-spacing: normal !important;
+  }
+
+  [lang='bn'] {
+    line-height: 1.8;
+  }
+
+  /* Headings can stay tighter than body copy, but not as tight as Latin. */
+  [lang='bn'] :is(h1, h2, h3, h4) {
+    line-height: 1.45;
+  }
+
   /* Respect users who ask the OS for less movement. */
   @media (prefers-reduced-motion: reduce) {
     html {
@@ -121,6 +158,13 @@
 /* -------------------------------------------------------------------------
  * Reusable utilities
  * ---------------------------------------------------------------------- */
+/* Bengali-first text. Only needed when you want the Bengali face to win for
+ * Latin characters too — a Bangla wordmark, say. Ordinary mixed text does not
+ * need it: the stack order in @theme already picks the right face per glyph. */
+@utility font-bangla {
+  font-family: var(--font-bangla);
+}
+
 @utility text-gradient {
   background-image: linear-gradient(
     100deg,
@@ -295,5 +339,12 @@
   .prose img {
     border-radius: 0.875rem;
     max-width: 100%;
+  }
+
+  /* A Bangla post needs more leading than the Latin default. Two attribute
+   * selectors outrank `.prose`, so this wins without !important. */
+  [lang='bn'] .prose,
+  .prose[lang='bn'] {
+    line-height: 1.9;
   }
 }

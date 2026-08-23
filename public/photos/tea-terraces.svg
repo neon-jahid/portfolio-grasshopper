@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1000" viewBox="0 0 1500 1000">
+  <defs>
+    <linearGradient id="base" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0e2416"/>
+      <stop offset="1" stop-color="#2f5b2c"/>
+    </linearGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="110"/>
+    </filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+  </defs>
+  <rect width="1500" height="1000" fill="url(#base)"/>
+  <g filter="url(#soft)">
+    <ellipse cx="390" cy="340" rx="630" ry="420" fill="#8fd46a" opacity="0.5"/>
+    <ellipse cx="1140" cy="740" rx="780" ry="520" fill="#0a1a10" opacity="0.6"/>
+    <ellipse cx="900" cy="220" rx="420.00000000000006" ry="280" fill="#e8f5c8" opacity="0.24"/>
+  </g>
+  <rect width="1500" height="1000" filter="url(#grain)" opacity="0.14"/>
+  <rect width="1500" height="1000" fill="url(#base)" opacity="0.12"/>
+</svg>

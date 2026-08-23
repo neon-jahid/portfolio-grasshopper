@@ -6,6 +6,8 @@ import { SmartLink } from '../ui/SmartLink';
 import { CloseIcon, Icon } from '../icons';
 import { cn } from '../../lib/utils';
 import { EASE } from '../../lib/motion';
+import { ui } from '../../data/ui';
+import { toBanglaDigits } from '../../lib/utils';
 
 /** Panel slides in from the right; its links arrive one after another. */
 const panelVariants = {
@@ -58,7 +60,7 @@ export function MobileMenu({ isOpen, onClose, isLinkActive }) {
           />
 
           <motion.nav
-            aria-label="Mobile"
+            aria-label={ui.chrome.navMobile}
             variants={panelVariants}
             initial="hidden"
             animate="visible"
@@ -69,7 +71,7 @@ export function MobileMenu({ isOpen, onClose, isLinkActive }) {
               <button
                 type="button"
                 onClick={onClose}
-                aria-label="Close menu"
+                aria-label={ui.chrome.closeMenu}
                 className="grid size-10 place-items-center rounded-full border border-line text-muted transition-colors hover:border-accent hover:text-accent"
               >
                 <CloseIcon className="size-5" />
@@ -90,7 +92,7 @@ export function MobileMenu({ isOpen, onClose, isLinkActive }) {
                     )}
                   >
                     <span className="font-mono text-xs text-faint">
-                      0{index + 1}
+                      {toBanglaDigits(String(index + 1).padStart(2, '0'))}
                     </span>
                     {link.label}
                   </SmartLink>

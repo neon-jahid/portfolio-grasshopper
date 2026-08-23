@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { profile, socials } from '../data/site';
 import { Container } from '../components/ui/Container';
 import { fadeUp, staggerContainer, whenInView } from '../lib/motion';
+import { ui } from '../data/ui';
 
 /**
  * Contact: an email address and nothing else.
@@ -27,7 +28,7 @@ export function Contact() {
             variants={fadeUp}
             className="font-mono text-xs tracking-[0.2em] text-accent uppercase"
           >
-            say hello
+            {ui.contact.eyebrow}
           </motion.p>
 
           <motion.h2
@@ -35,7 +36,7 @@ export function Contact() {
             variants={fadeUp}
             className="mt-5 text-3xl font-semibold sm:text-4xl"
           >
-            Let’s talk.
+            {ui.contact.heading}
           </motion.h2>
 
           <motion.div variants={fadeUp} className="mt-8">

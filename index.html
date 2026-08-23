@@ -1,22 +1,23 @@
 <!doctype html>
-<html lang="en">
+<html lang="bn">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Jahid Hasan — SQA Engineer</title>
+    <title>জাহিদ হাসান — এসকিউএ ইঞ্জিনিয়ার</title>
     <meta
       name="description"
-      content="Portfolio of Jahid Hasan, Software Quality Assurance Engineer. Manual and automation testing, API testing, performance testing and writing about quality engineering."
+      content="জাহিদ হাসানের পোর্টফোলিও — সফটওয়্যার কোয়ালিটি অ্যাসিওরেন্স ইঞ্জিনিয়ার। ম্যানুয়াল ও অটোমেশন টেস্টিং, API টেস্টিং, পারফরম্যান্স টেস্টিং, আর কোয়ালিটি ইঞ্জিনিয়ারিং নিয়ে লেখালেখি।"
     />
 
     <!-- Open Graph / social preview -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Jahid Hasan — SQA Engineer" />
+    <meta property="og:locale" content="bn_BD" />
+    <meta property="og:title" content="জাহিদ হাসান — এসকিউএ ইঞ্জিনিয়ার" />
     <meta
       property="og:description"
-      content="Software Quality Assurance Engineer. Manual & automation testing, API testing, performance testing."
+      content="সফটওয়্যার কোয়ালিটি অ্যাসিওরেন্স ইঞ্জিনিয়ার। ম্যানুয়াল ও অটোমেশন টেস্টিং, API ও পারফরম্যান্স টেস্টিং।"
     />
 
     <!-- Set the theme before first paint so there is no light/dark flash -->
@@ -36,8 +37,19 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!--
+      Hind Siliguri covers Bengali; Poppins and Space Mono do not. Google
+      Fonts splits its stylesheet by unicode-range, so the Bengali files are
+      only downloaded once a Bengali glyph is actually on the page — an
+      English-only visit costs nothing extra.
+
+      The site is in Bangla, so <html lang="bn"> is set above and the script
+      rules in src/index.css handle tracking and leading. Switching back to
+      English means changing it to lang="en" and profile.locale in
+      src/data/site.js to 'en-GB'.
+    -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
   </head>

@@ -1,76 +1,76 @@
 ---
-title: Writing Bug Reports Developers Act On
+title: এমন বাগ রিপোর্ট, যেটা ডেভেলপার পড়ে কাজ শুরু করতে পারে
 date: 2026-07-18
-excerpt: A bug report is a handover, not an accusation. Here is the structure I use so a developer can reproduce, understand and fix an issue without asking me a single follow-up question.
-tags: [process, reporting, manual-testing]
+excerpt: বাগ রিপোর্ট একটা হ্যান্ডওভার, অভিযোগ না। যে কাঠামোয় লিখলে ডেভেলপার একটাও পাল্টা প্রশ্ন না করে সমস্যাটা রিপ্রোডিউস, বুঝতে আর ঠিক করতে পারে।
+tags: [প্রসেস, রিপোর্টিং, ম্যানুয়াল-টেস্টিং]
 featured: true
 draft: false
 ---
 
-Most rejected bugs are not wrong. They are unclear. The finding was real, but the report did not carry enough context for anyone else to act on it, so it bounced back with "cannot reproduce" and everybody lost a day.
+বেশিরভাগ রিজেক্ট হওয়া বাগ আসলে ভুল না। সেগুলো অস্পষ্ট। সমস্যাটা সত্যিই ছিল, কিন্তু রিপোর্টে এতটা কনটেক্সট ছিল না যে আর কেউ সেটা ধরে এগোতে পারে। ফলে "cannot reproduce" লিখে ফেরত এল, আর দুই পক্ষেরই একটা দিন গেল।
 
-A bug report is a handover. The question it has to answer is simple: **what would another person need in order to see what I just saw?**
+বাগ রিপোর্ট একটা হ্যান্ডওভার। এটার উত্তর দিতে হয় খুব সহজ একটা প্রশ্নের: **আমি এইমাত্র যা দেখলাম, আরেকজন সেটা দেখতে হলে তার কী কী লাগবে?**
 
-## The structure I use
+## যে কাঠামোয় আমি লিখি
 
-Every report I file has the same six parts, in the same order.
+আমার ফাইল করা প্রতিটা রিপোর্টে একই ছয়টা অংশ থাকে, একই ক্রমে।
 
-1. **Title** — component, behaviour, condition. `Checkout: order total ignores discount when coupon applied after address change`.
-2. **Environment** — build number, browser or device, account or role, environment name.
-3. **Steps to reproduce** — numbered, starting from a known state.
-4. **Expected result** — what the requirement or common sense says should happen.
-5. **Actual result** — what happened, quoted exactly where there is an error message.
-6. **Evidence** — screenshot, screen recording, network log, or the failing request and response.
+1. **টাইটেল** — কম্পোনেন্ট, আচরণ, শর্ত। `চেকআউট: ঠিকানা বদলানোর পর কুপন দিলে অর্ডার টোটালে ডিসকাউন্ট ধরছে না`।
+2. **এনভায়রনমেন্ট** — বিল্ড নম্বর, ব্রাউজার বা ডিভাইস, অ্যাকাউন্ট বা রোল, এনভায়রনমেন্টের নাম।
+3. **রিপ্রোডিউস করার ধাপ** — নম্বর দেওয়া, আর শুরুটা এমন এক অবস্থা থেকে যেটা সবাই বানাতে পারে।
+4. **যা হওয়ার কথা** — রিকোয়্যারমেন্ট বা সাধারণ বুদ্ধি অনুযায়ী যা হওয়া উচিত।
+5. **যা হয়েছে** — আসলে কী হলো, এরর মেসেজ থাকলে হুবহু তুলে দেওয়া।
+6. **প্রমাণ** — স্ক্রিনশট, স্ক্রিন রেকর্ডিং, নেটওয়ার্ক লগ, বা ফেল করা রিকোয়েস্ট ও রেসপন্স।
 
-The order matters. A developer reading top to bottom gets the *what*, then the *where*, then the *how*, and only then the proof.
+ক্রমটা গুরুত্বপূর্ণ। উপর থেকে নিচে পড়তে গিয়ে ডেভেলপার আগে পায় *কী*, তারপর *কোথায়*, তারপর *কীভাবে*, আর সবশেষে প্রমাণ।
 
-## Titles carry most of the weight
+## ভার বেশিরভাগটাই টানে টাইটেল
 
-The title is the only part that shows up in a backlog view, a standup, and a release-notes filter. It is doing more work than any other field.
+ব্যাকলগের লিস্টে, স্ট্যান্ডআপে, রিলিজ নোটের ফিল্টারে — সব জায়গায় শুধু টাইটেলটাই চোখে পড়ে। বাকি সব ফিল্ডের চেয়ে ওটাই বেশি খাটছে।
 
-A weak title describes a feeling:
+দুর্বল টাইটেল একটা অনুভূতির বর্ণনা দেয়:
 
-> Checkout is broken
+> চেকআউট কাজ করছে না
 
-A strong title describes a condition and an outcome:
+শক্ত টাইটেল একটা শর্ত আর তার ফলাফল বলে:
 
-> Checkout: order total ignores discount when coupon is applied after changing the address
+> চেকআউট: ঠিকানা বদলানোর পর কুপন দিলে অর্ডার টোটালে ডিসকাউন্ট ধরছে না
 
-The second one can be triaged without opening it. That is the whole goal.
+দ্বিতীয়টা না খুলেই ট্রায়াজ করা যায়। উদ্দেশ্যটা তো এটাই।
 
-## Steps start from a known state
+## ধাপ শুরু হোক পরিচিত এক অবস্থা থেকে
 
-"Log in and go to checkout" assumes my cart, my account and my feature flags. Start from something anyone can recreate:
+"লগ ইন করে চেকআউটে যান" — এখানে ধরে নেওয়া হচ্ছে আমার কার্ট, আমার অ্যাকাউন্ট, আমার ফিচার ফ্ল্যাগ। এমন জায়গা থেকে শুরু করুন যেটা যে কেউ বানিয়ে নিতে পারে:
 
 ```text
-1. Sign in as a standard customer (test account: qa-standard-01)
-2. Add any in-stock item to the cart
-3. Go to Checkout
-4. Apply coupon SAVE10 — note the total drops by 10%
-5. Change the delivery address to a different country
-6. Observe the order total
+১. সাধারণ কাস্টমার হিসেবে সাইন ইন করুন (টেস্ট অ্যাকাউন্ট: qa-standard-01)
+২. স্টকে আছে এমন যেকোনো একটা পণ্য কার্টে দিন
+৩. চেকআউটে যান
+৪. SAVE10 কুপনটা দিন — খেয়াল করুন টোটাল ১০% কমে গেছে
+৫. ডেলিভারি ঠিকানা বদলে অন্য একটা দেশ দিন
+৬. অর্ডার টোটালটা দেখুন
 ```
 
-If a step needs specific data, name the data. If it needs a specific state, say how to get there.
+কোনো ধাপে নির্দিষ্ট ডেটা লাগলে ডেটাটার নাম লিখে দিন। নির্দিষ্ট কোনো অবস্থা লাগলে সেখানে কীভাবে পৌঁছাবে সেটা বলে দিন।
 
-## Separate the symptom from your theory
+## উপসর্গ আর নিজের ধারণা আলাদা রাখুন
 
-It is tempting to write "the discount service is not recalculating on address change". Sometimes you are right. Often you are not, and a wrong theory sends the fix in the wrong direction.
+"ঠিকানা বদলালে ডিসকাউন্ট সার্ভিস আবার হিসাব করছে না" — এটা লিখে ফেলার লোভ হয়। কখনো আপনি ঠিকই ধরেছেন। প্রায়ই ধরেননি, আর ভুল ধারণা ফিক্সটাকে ভুল দিকে পাঠিয়ে দেয়।
 
-Put observations in the report and theories in a clearly labelled note at the bottom:
+যা দেখেছেন সেটা রিপোর্টে রাখুন, আর ধারণাটা নিচে আলাদা করে চিহ্নিত একটা নোটে:
 
-> **Possible cause:** the totals call fires before the address update resolves — the network tab shows `POST /totals` completing before `PATCH /address`.
+> **সম্ভাব্য কারণ:** ঠিকানা আপডেট শেষ হওয়ার আগেই টোটালের কলটা চলে যাচ্ছে — নেটওয়ার্ক ট্যাবে `POST /totals` শেষ হচ্ছে `PATCH /address`-এর আগেই।
 
-Now the developer has your reasoning without being anchored to it.
+এতে ডেভেলপার আপনার যুক্তিটা পেল, অথচ সেটার সাথে বাঁধা পড়ল না।
 
-## Attach the smallest useful evidence
+## প্রমাণ দিন সবচেয়ে ছোটটা, যেটা কাজে লাগে
 
-A forty-second video where the bug appears at second thirty-eight is worse than one screenshot with the wrong number circled. Trim it. If the failure is in an API response, paste the request and the response body rather than a picture of them — text is searchable.
+চল্লিশ সেকেন্ডের ভিডিও যেখানে বাগটা আটত্রিশ সেকেন্ডে আসে — তার চেয়ে ভুল সংখ্যাটা গোল করে দাগানো একটা স্ক্রিনশট ঢের ভালো। কেটে ছোট করুন। সমস্যাটা যদি API রেসপন্সে হয়, তার ছবি না দিয়ে রিকোয়েস্ট আর রেসপন্স বডিটা পেস্ট করুন — টেক্সট অন্তত সার্চ করা যায়।
 
-## Severity and priority are different things
+## সিভিয়ারিটি আর প্রায়োরিটি এক জিনিস না
 
-Severity is how badly the thing is broken. Priority is how soon somebody should care. A crash in a screen nobody visits is high severity and low priority. Saying which one you mean saves an argument in triage.
+সিভিয়ারিটি হলো জিনিসটা কতটা খারাপভাবে ভেঙেছে। প্রায়োরিটি হলো কত তাড়াতাড়ি কারো এটা নিয়ে ভাবা উচিত। যে স্ক্রিনে কেউ যায়ই না সেখানে ক্র্যাশ মানে সিভিয়ারিটি বেশি, প্রায়োরিটি কম। কোনটা বোঝাচ্ছেন সেটা লিখে দিলে ট্রায়াজে একটা তর্ক বাঁচে।
 
-## The test before you file
+## ফাইল করার আগে নিজের টেস্টটা
 
-Read your own report as if you have never seen the feature. If you can follow it from a clean environment and reach the failure, it is ready. If you cannot, no one else will either.
+নিজের রিপোর্টটা এমনভাবে পড়ুন যেন ফিচারটা জীবনেও দেখেননি। পরিষ্কার একটা এনভায়রনমেন্ট থেকে শুরু করে যদি সমস্যাটা পর্যন্ত পৌঁছাতে পারেন, তাহলে রিপোর্ট তৈরি। না পারলে, আর কেউও পারবে না।

@@ -8,16 +8,16 @@
 export const projects = [
   {
     id: 'ecommerce-regression',
-    title: 'E-commerce Regression Suite',
+    title: 'ই-কমার্স রিগ্রেশন স্যুট',
     summary:
-      'End-to-end automated regression coverage for a multi-vendor storefront, wired into CI so every pull request gets a verdict.',
+      'একটা মাল্টি-ভেন্ডর স্টোরফ্রন্টের জন্য এন্ড-টু-এন্ড অটোমেটেড রিগ্রেশন কাভারেজ, CI-এর সাথে জোড়া — যাতে প্রতিটা পুল রিকোয়েস্টেই একটা রায় পাওয়া যায়।',
     highlights: [
-      '180+ automated scenarios across checkout, search and account flows',
-      'Cut the manual regression pass from two days to forty minutes',
-      'Page Object Model structure so new pages take minutes to cover',
+      'চেকআউট, সার্চ আর অ্যাকাউন্ট ফ্লো মিলিয়ে ১৮০+ অটোমেটেড সিনারিও',
+      'ম্যানুয়াল রিগ্রেশন পাস দুই দিন থেকে নেমে চল্লিশ মিনিটে',
+      'Page Object Model কাঠামো, ফলে নতুন পেজ কাভার করতে কয়েক মিনিটই যথেষ্ট',
     ],
     stack: ['Playwright', 'JavaScript', 'GitHub Actions', 'Allure'],
-    type: 'Automation',
+    type: 'অটোমেশন',
     featured: true,
     links: {
       repo: 'https://github.com/',
@@ -27,44 +27,44 @@ export const projects = [
   },
   {
     id: 'api-contract-checks',
-    title: 'API Contract Test Pack',
+    title: 'API কন্ট্রাক্ট টেস্ট প্যাক',
     summary:
-      'A Postman and Newman collection validating schema, status codes and auth rules for a payments API across three environments.',
+      'একটা পেমেন্ট API-এর স্কিমা, স্ট্যাটাস কোড আর অথ রুল তিনটা এনভায়রনমেন্টে যাচাই করার Postman ও Newman কালেকশন।',
     highlights: [
-      'Environment-driven collection: one run covers three environments',
-      'Schema assertions catch breaking changes before release',
-      'Runs nightly and posts a summary back to the team channel',
+      'এনভায়রনমেন্ট-চালিত কালেকশন: এক রানেই তিনটা এনভায়রনমেন্ট কাভার হয়',
+      'স্কিমা অ্যাসারশন রিলিজের আগেই ব্রেকিং চেঞ্জ ধরে ফেলে',
+      'প্রতি রাতে চলে আর দলের চ্যানেলে সারাংশ পাঠিয়ে দেয়',
     ],
     stack: ['Postman', 'Newman', 'JSON Schema', 'Node.js'],
-    type: 'API Testing',
+    type: 'API টেস্টিং',
     featured: true,
     links: { repo: 'https://github.com/', live: '', caseStudy: '' },
   },
   {
     id: 'load-baseline',
-    title: 'Load & Performance Baseline',
+    title: 'লোড ও পারফরম্যান্স বেসলাইন',
     summary:
-      'A JMeter test plan establishing response-time baselines for the ten busiest endpoints, with budgets that fail the build on regression.',
+      'সবচেয়ে ব্যস্ত দশটা এন্ডপয়েন্টের রেসপন্স-টাইম বেসলাইন ঠিক করার একটা JMeter টেস্ট প্ল্যান, সাথে এমন বাজেট যা রিগ্রেশন হলে বিল্ড ফেল করিয়ে দেয়।',
     highlights: [
-      'Ramped load profiles modelled on real traffic patterns',
-      'Documented p95 budget per endpoint',
+      'বাস্তব ট্রাফিকের ধরন দেখে বানানো র‍্যাম্পড লোড প্রোফাইল',
+      'প্রতিটা এন্ডপয়েন্টের জন্য লিখিত p95 বাজেট',
     ],
     stack: ['JMeter', 'Grafana', 'SQL'],
-    type: 'Performance',
+    type: 'পারফরম্যান্স',
     featured: false,
     links: { repo: 'https://github.com/', live: '', caseStudy: '' },
   },
   {
     id: 'mobile-test-strategy',
-    title: 'Mobile Release Test Strategy',
+    title: 'মোবাইল রিলিজ টেস্ট স্ট্র্যাটেজি',
     summary:
-      'A written strategy and reusable checklist covering device matrix, offline behaviour and release-candidate sign-off for an Android app.',
+      'একটা অ্যান্ড্রয়েড অ্যাপের ডিভাইস ম্যাট্রিক্স, অফলাইন আচরণ আর রিলিজ-ক্যান্ডিডেট সাইন-অফ নিয়ে লিখিত স্ট্র্যাটেজি ও বারবার ব্যবহারযোগ্য চেকলিস্ট।',
     highlights: [
-      'Risk-based device matrix instead of testing everything everywhere',
-      'Checklist reused across six consecutive releases',
+      'সব জায়গায় সব কিছু টেস্ট না করে ঝুঁকি অনুযায়ী সাজানো ডিভাইস ম্যাট্রিক্স',
+      'পরপর ছয়টা রিলিজে একই চেকলিস্ট কাজে লেগেছে',
     ],
     stack: ['Appium', 'TestRail', 'Android'],
-    type: 'Strategy',
+    type: 'স্ট্র্যাটেজি',
     featured: false,
     links: { repo: '', live: '', caseStudy: '' },
   },

@@ -187,6 +187,79 @@ export const CheckIcon = (props) => (
   </Svg>
 );
 
+export const CameraIcon = (props) => (
+  <Svg {...props}>
+    <path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.7a1 1 0 0 0 .8-.4l1-1.3a1 1 0 0 1 .8-.4h4.4a1 1 0 0 1 .8.4l1 1.3a1 1 0 0 0 .8.4h1.7A2.5 2.5 0 0 1 21 8.5v8A2.5 2.5 0 0 1 18.5 19h-13A2.5 2.5 0 0 1 3 16.5z" />
+    <circle cx="12" cy="12.5" r="3.5" />
+  </Svg>
+);
+
+export const ApertureIcon = (props) => (
+  <Svg {...props}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 3v8.5M20.8 9.5l-8.1 2.6M17.3 20.1l-5-6.9M6.7 20.1l5-6.9M3.2 9.5l8.1 2.6" />
+  </Svg>
+);
+
+export const FilmIcon = (props) => (
+  <Svg {...props}>
+    <rect x="3" y="4" width="18" height="16" rx="2" />
+    <path d="M7 4v16M17 4v16M3 9h4M3 15h4M17 9h4M17 15h4" />
+  </Svg>
+);
+
+export const MountainIcon = (props) => (
+  <Svg {...props}>
+    <path d="m3 19 6.5-11 4 6.2 2.3-3.4L21 19z" />
+    <circle cx="17.5" cy="6.5" r="1.8" />
+  </Svg>
+);
+
+export const CoffeeIcon = (props) => (
+  <Svg {...props}>
+    <path d="M3 9h13v5a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5z" />
+    <path d="M16 10.5h1.5a2.5 2.5 0 0 1 0 5H16M7 2.5v2.5M11 2.5v2.5" />
+  </Svg>
+);
+
+export const BookOpenIcon = (props) => (
+  <Svg {...props}>
+    <path d="M12 7.5C10.5 6 8.5 5.3 4 5.5v12c4.5-.2 6.5.5 8 2 1.5-1.5 3.5-2.2 8-2v-12c-4.5-.2-6.5.5-8 2z" />
+    <path d="M12 7.5V21" />
+  </Svg>
+);
+
+export const HeadphonesIcon = (props) => (
+  <Svg {...props}>
+    <path d="M4 14v-2a8 8 0 0 1 16 0v2" />
+    <path d="M4 14h2.5a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H5.5A1.5 1.5 0 0 1 4 18.5zM20 14h-2.5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h1a1.5 1.5 0 0 0 1.5-1.5z" />
+  </Svg>
+);
+
+export const ChevronLeftIcon = (props) => (
+  <Svg {...props}>
+    <path d="m15 5-7 7 7 7" />
+  </Svg>
+);
+
+export const ChevronRightIcon = (props) => (
+  <Svg {...props}>
+    <path d="m9 5 7 7-7 7" />
+  </Svg>
+);
+
+export const ExpandIcon = (props) => (
+  <Svg {...props}>
+    <path d="M9 3H3v6M15 21h6v-6M3 15v6h6M21 9V3h-6" />
+  </Svg>
+);
+
+export const QuoteIcon = (props) => (
+  <Svg {...props}>
+    <path d="M9 6C6 7.5 4.5 10 4.5 13.5A3.5 3.5 0 0 0 8 17a3 3 0 0 0 0-6c-.6 0-1.1.1-1.5.4M19 6c-3 1.5-4.5 4-4.5 7.5A3.5 3.5 0 0 0 18 17a3 3 0 0 0 0-6c-.6 0-1.1.1-1.5.4" />
+  </Svg>
+);
+
 /**
  * Name -> component map behind the `<Icon name="..." />` helper.
  * Not exported: data files reference icons by string, never by import.
@@ -216,6 +289,17 @@ const iconsByName = {
   search: SearchIcon,
   copy: CopyIcon,
   check: CheckIcon,
+  camera: CameraIcon,
+  aperture: ApertureIcon,
+  film: FilmIcon,
+  mountain: MountainIcon,
+  coffee: CoffeeIcon,
+  bookOpen: BookOpenIcon,
+  headphones: HeadphonesIcon,
+  chevronLeft: ChevronLeftIcon,
+  chevronRight: ChevronRightIcon,
+  expand: ExpandIcon,
+  quote: QuoteIcon,
 };
 
 /**

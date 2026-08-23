@@ -3,25 +3,28 @@
  *
  * `level` (0-100) drives the meter on each row. Remove the property and the
  * row renders without a meter.
+ *
+ * Tool names stay in Latin script on purpose — nobody in a Dhaka standup says
+ * "প্লেরাইট", they say "Playwright". Only the surrounding words are Bangla.
  */
 
 export const skillGroups = [
   {
     id: 'testing',
-    title: 'Testing & QA',
-    description: 'How I plan, design and run tests.',
+    title: 'টেস্টিং ও কিউএ',
+    description: 'যেভাবে টেস্ট প্ল্যান করি, সাজাই আর চালাই।',
     icon: 'checklist',
     skills: [
-      { name: 'Manual & Exploratory Testing', level: 92 },
-      { name: 'Test Case Design', level: 90 },
-      { name: 'Regression & Smoke Suites', level: 85 },
-      { name: 'Bug Reporting & Triage', level: 88 },
+      { name: 'ম্যানুয়াল ও এক্সপ্লোরেটরি টেস্টিং', level: 92 },
+      { name: 'টেস্ট কেস ডিজাইন', level: 90 },
+      { name: 'রিগ্রেশন ও স্মোক স্যুট', level: 85 },
+      { name: 'বাগ রিপোর্টিং ও ট্রায়াজ', level: 88 },
     ],
   },
   {
     id: 'automation',
-    title: 'Automation',
-    description: 'Tools that make the repetitive parts repeatable.',
+    title: 'অটোমেশন',
+    description: 'বারবার করার কাজগুলো যেসব টুল দিয়ে সামলাই।',
     icon: 'robot',
     skills: [
       { name: 'Selenium WebDriver', level: 80 },
@@ -32,26 +35,26 @@ export const skillGroups = [
   },
   {
     id: 'api-performance',
-    title: 'API & Performance',
-    description: 'Checking the layers users never see.',
+    title: 'API ও পারফরম্যান্স',
+    description: 'ইউজার যে স্তরগুলো কখনো দেখে না, সেগুলো যাচাই করা।',
     icon: 'pulse',
     skills: [
-      { name: 'Postman & Newman', level: 88 },
+      { name: 'Postman ও Newman', level: 88 },
       { name: 'REST Assured', level: 70 },
       { name: 'Apache JMeter', level: 68 },
-      { name: 'SQL for test data', level: 75 },
+      { name: 'টেস্ট ডেটার জন্য SQL', level: 75 },
     ],
   },
   {
     id: 'process',
-    title: 'Process & Tooling',
-    description: 'The workflow around the testing.',
+    title: 'প্রসেস ও টুলিং',
+    description: 'টেস্টিংকে ঘিরে যে কাজের ধারা।',
     icon: 'workflow',
     skills: [
       { name: 'Jira / TestRail', level: 85 },
-      { name: 'Agile & Scrum', level: 82 },
-      { name: 'Git & CI pipelines', level: 74 },
-      { name: 'Test Documentation', level: 90 },
+      { name: 'Agile ও Scrum', level: 82 },
+      { name: 'Git ও CI পাইপলাইন', level: 74 },
+      { name: 'টেস্ট ডকুমেন্টেশন', level: 90 },
     ],
   },
 ];
