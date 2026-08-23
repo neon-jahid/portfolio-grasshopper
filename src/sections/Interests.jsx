@@ -66,16 +66,23 @@ export function Interests() {
 /**
  * One interest. The featured variant gets the icon as an oversized watermark
  * behind the copy, which is what stops a two-by-two card reading as empty.
+ *
+ * Both icons scale with the card rather than sitting at one size. The
+ * watermark is the reason: at 13rem it is drawn for a card that spans two
+ * columns and two rows, and on a phone — where every card collapses to a
+ * single full-width column a fraction of that height — it filled the card
+ * from the chip down and washed out the text it is meant to sit behind.
  */
 function InterestCard({ interest, featured }) {
   return (
-    <SpotlightCard className="h-full p-6 sm:p-7">
+    <SpotlightCard className="h-full p-5 sm:p-7">
       {featured && (
         <Icon
           name={interest.icon}
           aria-hidden="true"
           className={cn(
-            'pointer-events-none absolute -right-8 -bottom-10 size-52',
+            'pointer-events-none absolute -right-5 -bottom-6 size-28',
+            'sm:-right-8 sm:-bottom-10 sm:size-44 lg:size-52',
             'transition-transform duration-700 ease-out group-hover:-translate-y-2 group-hover:rotate-6',
             iconTone(interest.icon).wash,
           )}
@@ -87,16 +94,21 @@ function InterestCard({ interest, featured }) {
           'grid shrink-0 place-items-center rounded-xl',
           iconTone(interest.icon).chip,
           'transition-transform duration-500 ease-out group-hover:-rotate-6 group-hover:scale-110',
-          featured ? 'size-12' : 'size-10',
+          featured ? 'size-11 sm:size-12' : 'size-9 sm:size-10',
         )}
       >
-        <Icon name={interest.icon} className={featured ? 'size-6' : 'size-5'} />
+        <Icon
+          name={interest.icon}
+          // shrink-0: the card is a flex column, and without it a long title
+          // wrapping to a third line squashes the glyph rather than the box.
+          className={cn('shrink-0', featured ? 'size-5.5 sm:size-6' : 'size-4.5 sm:size-5')}
+        />
       </span>
 
       <h3
         className={cn(
-          'mt-5 font-semibold',
-          featured ? 'text-xl sm:text-2xl' : 'text-base',
+          'mt-4 font-semibold sm:mt-5',
+          featured ? 'text-lg sm:text-2xl' : 'text-base',
         )}
       >
         {interest.title}
@@ -138,7 +150,7 @@ function CurrentlyPanel() {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   return (
-    <SpotlightCard className="h-full p-6 sm:p-7">
+    <SpotlightCard className="h-full p-5 sm:p-7">
       <p className="flex items-center gap-2.5 font-mono text-xs tracking-[0.2em] text-faint uppercase">
         {/* Live dot: a slow pulse behind a solid centre. */}
         <span className="relative flex size-2">
