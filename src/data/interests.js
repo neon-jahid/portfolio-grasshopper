@@ -7,10 +7,9 @@
  */
 
 export const interestsIntro = {
-    eyebrow: 'কাজের বাইরে',
+    eyebrow: 'Life Beyond Work',
     title: 'শখ',
-    description:
-        'যেসব জিনিস কৌতূহলটা বাঁচিয়ে রাখে। একটাও সিভিতে নেই, অথচ সবগুলোই আমাকে কাজে একটু ভালো করে তোলে।',
+    description: 'কাজের বাইরে যেসব জিনিস নিয়ে পড়ে থাকতে ভালো লাগে',
 };
 
 /**
@@ -28,35 +27,33 @@ export const interests = [
     {
         id: 'photography',
         title: 'ফটোগ্রাফি',
-        description:
-            'ভোরবেলা এমন আলোর পেছনে ছোটা যেটা আর কখনো হুবহু ফিরে আসবে না, আর যে রাস্তায় শখানেক বার হেঁটেছি সেটাকেই নতুন করে ফ্রেমে বসানো। একমাত্র শখ, যেটা আমাকে চোখে পড়ার মতো ধৈর্যশীল বানিয়েছে।',
+        description: 'I enjoy taking photos of nature, landscapes, the sea, and cats.',
         icon: 'camera',
-        meta: '২০১৯ সাল থেকে · Fujifilm X-T30',
+        meta: '২০১৯ সাল থেকে ',
         span: 'lg',
     },
     {
-        id: 'outdoors',
-        title: 'বাইরে ঘোরা',
-        description: 'পাহাড়ি ট্রেইল, লম্বা হাঁটা, আর চেয়ার থেকে ওঠার যেকোনো অজুহাত।',
-        icon: 'mountain',
-        meta: 'পছন্দের জায়গা এখনো বান্দরবান',
+        id: 'friends',
+        title: 'বন্ধুদের সাথে আড্ডা',
+        description: 'বন্ধুদের সাথে আড্ডা দেওয়া, হুটহাট ঘুরতে বের হওয়া, আর নতুন কোনো জায়গায় গিয়ে ভালো কিছু খাওয়া — সময়টা কীভাবে কেটে যায় টেরই পাওয়া যায় না।',
+        icon: 'users',
+        meta: 'আড্ডা, ঘোরাঘুরি আর খাওয়াদাওয়া',
         span: 'sm',
     },
     {
-        id: 'cafes',
-        title: 'পাড়ার ক্যাফে',
-        description: 'কোণের একটা টেবিল, এক কাপ কফি, আর দুই ঘণ্টা যা পুরোপুরি নিজের।',
+        id: 'tea',
+        title: 'এলাকার রঙ চা',
+        description: 'ঢাকায় যেসব জিনিস সবচেয়ে বেশি মিস করি, তার মধ্যে গ্রামের রং চা অন্যতম।',
         icon: 'coffee',
-        meta: 'ফ্ল্যাট হোয়াইট, চিনি ছাড়া',
+        meta: 'অল্প চিনি ',
         span: 'sm',
     },
     {
-        id: 'animation',
-        title: 'পুরোনো অ্যানিমেশন',
-        description:
-            'হাতে আঁকা সেল, রাবার-হোজ ক্যারেক্টার আর তার পেছনের ফ্রেম-বাই-ফ্রেম খাটুনি। সেকেন্ডে বারোটা ছবি নিয়ে মানুষ কতটা খুঁতখুঁতে হতে পারে — দেখলে নিজেরই কাজ করতে ইচ্ছে করে।',
-        icon: 'film',
-        meta: 'বেশিরভাগই ত্রিশ থেকে ষাটের দশকের',
+        id: 'fishing',
+        title: 'মাছ ধরা',
+        description: 'পুকুরের ধারে ছিপ হাতে ঘণ্টার পর ঘণ্টা বসে থাকা। কখন টোপে টান পড়বে সেই অপেক্ষার মধ্যে এক ধরনের শান্তি আছে — মাছ উঠুক বা না উঠুক, পানির পাশে বসে থাকাটাই যেন আসল আনন্দ।',
+        icon: 'fish',
+        meta: 'ছিপ, পুকুর আর একটু ধৈর্য',
         span: 'md',
     },
     {
@@ -84,11 +81,11 @@ export const interests = [
 export const currently = {
     label: 'এই মুহূর্তে',
     items: [
-        { id: 'learning', label: 'শিখছি', value: 'Playwright কম্পোনেন্ট টেস্টিং' },
-        { id: 'reading', label: 'পড়ছি', value: 'Thinking in Systems — ডোনেলা মিডোজ' },
-        { id: 'listening', label: 'শুনছি', value: 'হানিয়া রানির যেকোনো কিছু' },
-        { id: 'shooting', label: 'তুলছি', value: 'পুরান ঢাকা, একটা করে গলি' },
+        { id: 'learning', label: 'শিখছি', value: 'Playwright Component Testing, Deep Dive into SQA' },
+        { id: 'reading', label: 'পড়ছি', value: 'Dark Psychology' },
+        { id: 'listening', label: 'শুনছি', value: 'Ishq from Lost & Found' },
+        { id: 'shooting', label: 'তুলছি', value: 'City' },
     ],
     /** Rendered as a dated footnote under the list. */
-    updated: 'হালনাগাদ: অগাস্ট ২০২৬',
+    updated: 'Last Update: August 2026',
 };

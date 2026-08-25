@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+  <defs>
+    <linearGradient id="base" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#10231f"/>
+      <stop offset="1" stop-color="#1d5b4f"/>
+    </linearGradient>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="90"/>
+    </filter>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <clipPath id="frame"><rect width="800" height="1000"/></clipPath>
+  </defs>
+  <g clip-path="url(#frame)">
+    <rect width="800" height="1000" fill="url(#base)"/>
+    <g filter="url(#soft)">
+      <ellipse cx="620" cy="220" rx="300" ry="300" fill="#5fd6bd" opacity="0.45"/>
+      <ellipse cx="140" cy="820" rx="340" ry="340" fill="#10231f" opacity="0.7"/>
+    </g>
+    <g fill="#10231f" opacity="0.62">
+      <circle cx="400" cy="430" r="128"/>
+      <path d="M400 596c-158 0-268 108-286 260a20 20 0 0 0 20 24h532a20 20 0 0 0 20-24c-18-152-128-260-286-260z"/>
+    </g>
+    <g fill="none" stroke="#5fd6bd" stroke-width="6" opacity="0.35">
+      <circle cx="400" cy="430" r="128"/>
+      <path d="M400 596c-158 0-268 108-286 260a20 20 0 0 0 20 24h532a20 20 0 0 0 20-24c-18-152-128-260-286-260z"/>
+    </g>
+    <rect width="800" height="1000" filter="url(#grain)" opacity="0.06"/>
+  </g>
+</svg>

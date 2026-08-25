@@ -4,6 +4,7 @@ import { About } from '../sections/About';
 import { Professional } from '../sections/Professional';
 import { PhotographyPreview } from '../sections/PhotographyPreview';
 import { Interests } from '../sections/Interests';
+import { Friends } from '../sections/Friends';
 import { Testimonials } from '../sections/Testimonials';
 import { Skills } from '../sections/Skills';
 import { Projects } from '../sections/Projects';
@@ -24,6 +25,7 @@ const SECTION_COMPONENTS = {
   work: Professional,
   photography: PhotographyPreview,
   interests: Interests,
+  friends: Friends,
   testimonials: Testimonials,
   skills: Skills,
   projects: Projects,

@@ -75,6 +75,7 @@ export const sections = [
     { id: 'work', label: 'কাজ', enabled: true },
     { id: 'photography', label: 'ছবি', enabled: true, href: '/photos' },
     { id: 'interests', label: 'শখ', enabled: true },
+    { id: 'friends', label: 'বন্ধুরা', enabled: true },
     { id: 'skills', label: 'দক্ষতা', enabled: false },
     { id: 'projects', label: 'প্রজেক্ট', enabled: false },
     { id: 'experience', label: 'অভিজ্ঞতা', enabled: false },

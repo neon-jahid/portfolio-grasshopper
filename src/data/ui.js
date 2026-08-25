@@ -34,12 +34,30 @@ export const ui = {
         contact: 'যোগাযোগ করুন',
         /** @param {string} name */
         portraitAlt: (name) => `${name}-এর ইলাস্ট্রেশন`,
+        /** Scroll cue at the foot of the panel. */
+        scrollCue: 'স্ক্রল করুন',
     },
 
     about: {
         eyebrow: 'পরিচিতি',
         contact: 'যোগাযোগ করুন',
         portraitAlt: 'হাত ধরে দাঁড়িয়ে থাকা দুজনের ইলাস্ট্রেশন',
+        /** Caption card pinned to the illustration. */
+        captionLabel: 'অফ দ্য ক্লক',
+        caption: 'কাজের বাইরের সময়টুকু',
+    },
+
+    friends: {
+        /** @param {string} name */
+        portraitAlt: (name) => `${name}-এর ছবি`,
+        /** Pill on the photo. @param {string} year already in Bengali numerals */
+        since: (year) => `${year} থেকে`,
+        /** @param {string} years already in Bengali numerals */
+        duration: (years) => `${years} বছরের বন্ধুত্ব`,
+        /** Foot of the card. @param {string} where already in the locative */
+        met: (where) => `পরিচয় ${where}`,
+        /** Shown under the grid. @param {string} count in Bengali numerals */
+        total: (count) => `${count} জন, আর গোনা শেষ হয়নি।`,
     },
 
     work: {

@@ -14,6 +14,11 @@ import { ui } from '../data/ui';
  * Landing panel: introduction on the left, character illustration on the
  * right, over the shared <PageBackground>.
  *
+ * The copy hangs off a vertical accent rule and the portrait sits a little
+ * high in its column, so the panel reads as a poster rather than two even
+ * halves — the about section below is the mirrored, evenly-weighted version
+ * of the same split, and the two should not look interchangeable.
+ *
  * Everything animates on mount rather than on scroll, because it is already
  * in view when the page loads.
  */
@@ -29,7 +34,17 @@ export function Hero() {
             variants={staggerContainer(0.12, 0.1)}
             initial="hidden"
             animate="visible"
+            className="relative lg:border-l lg:border-line lg:pl-8"
           >
+            {/* The rule beside the copy, drawn downwards on load. */}
+            <motion.span
+              aria-hidden="true"
+              initial={{ scaleY: 0 }}
+              animate={{ scaleY: 1 }}
+              transition={{ duration: 1.1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute -left-px top-0 hidden h-full w-px origin-top bg-gradient-to-b from-accent via-accent/40 to-transparent lg:block"
+            />
+
             {profile.availability && (
               <motion.p
                 variants={fadeUp}
@@ -98,10 +113,33 @@ export function Hero() {
           <Portrait
             src={heroPortrait}
             alt={ui.hero.portraitAlt(profile.name)}
+            side="right"
             priority
-            className="mx-auto w-full max-w-xs lg:max-w-sm"
+            className="mx-auto w-full max-w-xs lg:max-w-sm lg:-translate-y-6"
           />
         </div>
+
+        {/* Scroll cue. Hidden on short screens, where it would collide with
+            the section below rather than point at it. */}
+        <motion.a
+          href="#about"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.6 }}
+          className="absolute inset-x-0 bottom-2 mx-auto hidden w-fit flex-col items-center gap-2 font-mono text-[0.7rem] tracking-[0.2em] text-faint uppercase transition-colors duration-300 hover:text-accent lg:flex"
+        >
+          {ui.hero.scrollCue}
+          <span
+            aria-hidden="true"
+            className="grid h-9 w-5 place-items-start rounded-full border border-line p-1"
+          >
+            <motion.span
+              animate={{ y: [0, 10, 0], opacity: [1, 0.2, 1] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+              className="block size-1.5 rounded-full bg-accent"
+            />
+          </span>
+        </motion.a>
       </Container>
     </section>
   );
