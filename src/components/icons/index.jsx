@@ -240,6 +240,23 @@ export const BookOpenIcon = (props) => (
   </Svg>
 );
 
+export const UsersIcon = (props) => (
+  <Svg {...props}>
+    <circle cx="9" cy="8" r="3.3" />
+    <path d="M2.8 19.5a6.2 6.2 0 0 1 12.4 0" />
+    <path d="M16.2 5.1a3.3 3.3 0 0 1 0 5.8M17.6 13.8a6.2 6.2 0 0 1 3.6 5.7" />
+  </Svg>
+);
+
+export const FishIcon = (props) => (
+  <Svg {...props}>
+    <path d="M2.5 12c3-4 6-6 8.5-6s5.5 2 6.9 6c-1.4 4-4.4 6-6.9 6s-5.5-2-8.5-6z" />
+    <path d="M17.9 12 21.5 8.5v7z" />
+    <path d="M9 7.3a7 7 0 0 0 0 9.4" />
+    <circle cx="6.5" cy="10.6" r=".85" />
+  </Svg>
+);
+
 export const HeadphonesIcon = (props) => (
   <Svg {...props}>
     <path d="M4 14v-2a8 8 0 0 1 16 0v2" />
@@ -308,6 +325,8 @@ const iconsByName = {
   coffee: CoffeeIcon,
   bookOpen: BookOpenIcon,
   headphones: HeadphonesIcon,
+  users: UsersIcon,
+  fish: FishIcon,
   chevronLeft: ChevronLeftIcon,
   chevronRight: ChevronRightIcon,
   expand: ExpandIcon,

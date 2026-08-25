@@ -1,14 +1,14 @@
 /**
  * The friends section — the people, not the projects.
  *
- * Everything here is placeholder content. Swap the names, professions and
- * years for your own, and drop real photos into `public/friends/` (the six
- * SVGs shipped there are stand-ins in the same style as the photography
- * placeholders, so the grid looks deliberate before you have files ready).
+ * Add someone by dropping their photo into `public/friends/` and adding an
+ * entry below. The SVGs still in that folder are stand-ins, in the same style
+ * as the photography placeholders, for slots that do not have a real photo
+ * yet.
  *
- * Photos are cropped to a 4:5 portrait frame from the middle, so the shape of
- * the file you drop in does not matter — a square phone crop and an upright
- * camera frame both fill the same tile.
+ * Photos are cropped to a square from the middle, so the shape of the file
+ * does not matter — a portrait phone shot and a wide camera frame both fill
+ * the same tile.
  */
 
 export const friendsIntro = {
@@ -42,12 +42,12 @@ export const friends = [
         src: '/friends/friend-1.jpg',
     },
     {
-        id: '',
+        id: 'ariful',
         name: 'আরিফুল ইসলাম',
         profession: 'সহকারী প্রকৌশলী, তিতাস ',
         since: '2014',
         where: 'হাই স্কুলে',
-        note: '',
+        note: 'বুঝে কম চিল্লায় বেশি',
         src: '/friends/friend-2.jpg',
     },
     {

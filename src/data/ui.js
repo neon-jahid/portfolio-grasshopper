@@ -50,10 +50,10 @@ export const ui = {
     friends: {
         /** @param {string} name */
         portraitAlt: (name) => `${name}-এর ছবি`,
-        /** Pill on the photo. @param {string} year already in Bengali numerals */
+        /** Chip on the photo. @param {string} years in Bengali numerals */
+        yearsShort: (years) => `${years} বছর`,
+        /** Foot of the card. @param {string} year in Bengali numerals */
         since: (year) => `${year} থেকে`,
-        /** @param {string} years already in Bengali numerals */
-        duration: (years) => `${years} বছরের বন্ধুত্ব`,
         /** Foot of the card. @param {string} where already in the locative */
         met: (where) => `পরিচয় ${where}`,
         /** Shown under the grid. @param {string} count in Bengali numerals */

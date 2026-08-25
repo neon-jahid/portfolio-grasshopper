@@ -27,7 +27,7 @@ export const interests = [
     {
         id: 'photography',
         title: 'ফটোগ্রাফি',
-        description: 'I enjoy taking photos of nature, landscapes, the sea, and cats.',
+        description: 'প্রকৃতি, ল্যান্ডস্কেপ, সমুদ্র আর বিড়ালের ছবি তুলতে ভালো লাগে।',
         icon: 'camera',
         meta: '২০১৯ সাল থেকে ',
         span: 'lg',

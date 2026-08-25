@@ -78,6 +78,8 @@ const toneByIcon = {
   film: 'blue',
   bookOpen: 'magenta',
   headphones: 'indigo',
+  users: 'sky',
+  fish: 'blue',
   /* Work and skills. */
   checklist: 'green',
   robot: 'indigo',
