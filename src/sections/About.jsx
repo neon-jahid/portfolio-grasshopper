@@ -24,103 +24,82 @@ import { ui } from '../data/ui';
  * Content lives in `personal` in data/site.js.
  */
 export function About() {
-  return (
-    <section
-      id="about"
-      aria-labelledby="about-title"
-      className="relative overflow-hidden py-section"
-    >
-      <Container className="relative">
-        <div className="grid items-center gap-12 sm:gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20">
-          <Portrait
-            src={aboutPortrait}
-            alt={ui.about.portraitAlt}
-            ratio="wide"
-            side="left"
-            floatOffset={8}
-            className="mx-auto w-full max-w-lg lg:order-first"
-          >
-            {/* Caption card, tucked into the corner nearest the copy. It
+    return (
+        <section
+            id='about'
+            aria-labelledby='about-title'
+            className='relative overflow-hidden py-section'>
+            <Container className='relative'>
+                <div className='grid items-center gap-12 sm:gap-14 lg:grid-cols-[0.92fr_1.08fr] lg:gap-20'>
+                    <Portrait
+                        src={aboutPortrait}
+                        alt={ui.about.portraitAlt}
+                        ratio='wide'
+                        side='left'
+                        floatOffset={8}
+                        className='mx-auto w-full max-w-lg lg:order-first'>
+                        {/* Caption card, tucked into the corner nearest the copy. It
                 overlaps the frame on purpose — the hero's portrait sits in a
                 clean rectangle, this one breaks out of it. */}
-            <motion.figcaption
-              {...whenInView}
-              variants={fadeUp}
-              className="absolute -bottom-5 right-4 rounded-2xl border border-line bg-surface/90 px-4 py-3 shadow-[0_20px_40px_-28px_rgba(0,0,0,0.6)] backdrop-blur-sm sm:right-6"
-            >
-              <span className="font-mono text-[0.7rem] tracking-[0.18em] text-accent uppercase">
-                {ui.about.captionLabel}
-              </span>
-              <span className="mt-0.5 block text-sm text-muted">
-                {ui.about.caption}
-              </span>
-            </motion.figcaption>
-          </Portrait>
+                        <motion.figcaption
+                            {...whenInView}
+                            variants={fadeUp}
+                            className='absolute -bottom-5 right-4 rounded-2xl border border-line bg-surface/90 px-4 py-3 shadow-[0_20px_40px_-28px_rgba(0,0,0,0.6)] backdrop-blur-sm sm:right-6'>
+                            <span className='font-mono text-[0.7rem] tracking-[0.18em] text-accent uppercase'>{ui.about.captionLabel}</span>
+                            <span className='mt-0.5 block text-sm text-muted'>{ui.about.caption}</span>
+                        </motion.figcaption>
+                    </Portrait>
 
-          <motion.div {...whenInView} variants={staggerContainer(0.1)}>
-            <motion.p
-              variants={fadeUp}
-              className="flex items-center gap-3 font-mono text-xs tracking-[0.2em] text-accent uppercase"
-            >
-              <span aria-hidden="true" className="h-px w-8 bg-accent/50" />
-              {ui.about.eyebrow}
-            </motion.p>
+                    <motion.div
+                        {...whenInView}
+                        variants={staggerContainer(0.1)}>
+                        <motion.p
+                            variants={fadeUp}
+                            className='flex items-center gap-3 font-mono text-xs tracking-[0.2em] text-accent uppercase'>
+                            <span
+                                aria-hidden='true'
+                                className='h-px w-8 bg-accent/50'
+                            />
+                            {ui.about.eyebrow}
+                        </motion.p>
 
-            <motion.h2
-              id="about-title"
-              variants={fadeUp}
-              className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl"
-            >
-              {personal.headline.first}
-              <span className="mt-1 block text-gradient">
-                {personal.headline.second}
-              </span>
-            </motion.h2>
+                        <motion.h2
+                            id='about-title'
+                            variants={fadeUp}
+                            className='mt-4 text-4xl font-semibold tracking-tight sm:text-5xl'>
+                            {personal.headline.first}
+                            <span className='mt-1 block text-gradient'>{personal.headline.second}</span>
+                        </motion.h2>
 
-            <motion.p
-              variants={fadeUp}
-              className="mt-6 max-w-xl border-l-2 border-accent/30 pl-5 text-xl text-muted"
-            >
-              {personal.lead}
-            </motion.p>
+                        <motion.p
+                            variants={fadeUp}
+                            className='mt-6 max-w-xl border-l-2 border-accent/30 pl-5 text-xl text-muted'>
+                            {personal.lead}
+                        </motion.p>
 
-            {personal.paragraphs.map((paragraph, index) => (
-              <motion.p
-                key={index}
-                variants={fadeUp}
-                className="mt-5 max-w-xl leading-relaxed text-muted"
-              >
-                {paragraph}
-              </motion.p>
-            ))}
+                        {personal.paragraphs.map((paragraph, index) => (
+                            <motion.p
+                                key={index}
+                                variants={fadeUp}
+                                className='mt-5 max-w-xl leading-relaxed text-muted'>
+                                {paragraph}
+                            </motion.p>
+                        ))}
 
-            {personal.interests.length > 0 && (
-              <motion.ul variants={fadeUp} className="mt-8 flex flex-wrap gap-2">
-                {personal.interests.map((interest) => (
-                  <li key={interest}>
-                    <Tag>{interest}</Tag>
-                  </li>
-                ))}
-              </motion.ul>
-            )}
-
-            <motion.div
-              variants={fadeUp}
-              className="mt-10 flex flex-wrap items-center gap-4"
-            >
-              <Button href="#contact">
-                {ui.about.contact}
-                <ArrowRightIcon className="size-4" />
-              </Button>
-
-              <p className="inline-flex items-center gap-2 font-mono text-xs text-faint">
-                <MapPinIcon className="size-4 text-accent" />
-                {profile.location}
-              </p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </Container>
-    </section>
-  );
+                        {personal.interests.length > 0 && (
+                            <motion.ul
+                                variants={fadeUp}
+                                className='mt-8 flex flex-wrap gap-2'>
+                                {personal.interests.map((interest) => (
+                                    <li key={interest}>
+                                        <Tag>{interest}</Tag>
+                                    </li>
+                                ))}
+                            </motion.ul>
+                        )}
+                    </motion.div>
+                </div>
+            </Container>
+        </section>
+    );
 }
