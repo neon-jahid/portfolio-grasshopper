@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { scrollToSection, scrollToTop } from '../../lib/scroll';
 
 /**
  * Keeps scroll position sensible across route changes:
@@ -14,15 +15,12 @@ export function ScrollManager() {
 
   useEffect(() => {
     if (!hash) {
-      window.scrollTo({ top: 0, behavior: 'instant' });
+      scrollToTop();
       return undefined;
     }
 
     // Wait a frame so the target section exists before scrolling to it.
-    const frame = requestAnimationFrame(() => {
-      const element = document.getElementById(hash.slice(1));
-      element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
+    const frame = requestAnimationFrame(() => scrollToSection(hash.slice(1)));
 
     return () => cancelAnimationFrame(frame);
   }, [pathname, hash]);
