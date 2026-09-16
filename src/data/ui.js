@@ -45,6 +45,11 @@ export const ui = {
         /** Caption card pinned to the illustration. */
         captionLabel: 'অফ দ্য ক্লক',
         caption: 'কাজের বাইরের সময়টুকু',
+        /** The toggle under the collapsed personal paragraphs. */
+        readMore: 'আরও পড়ুন',
+        readLess: 'সংক্ষেপে দেখুন',
+        /** Names the scroll area the open paragraphs turn into. */
+        readRegionLabel: 'ব্যক্তিগত জীবন নিয়ে লেখা',
     },
 
     friends: {

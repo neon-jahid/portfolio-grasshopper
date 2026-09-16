@@ -1,10 +1,9 @@
 import { motion } from 'framer-motion';
-import { personal, profile } from '../data/site';
+import { personal } from '../data/site';
 import { Container } from '../components/ui/Container';
-import { Button } from '../components/ui/Button';
 import { Portrait } from '../components/ui/Portrait';
 import { Tag } from '../components/ui/Tag';
-import { ArrowRightIcon, MapPinIcon } from '../components/icons';
+import { ReadMore } from '../components/ui/ReadMore';
 import { fadeUp, staggerContainer, whenInView } from '../lib/motion';
 import aboutPortrait from '../assets/about-portrait.webp';
 import { ui } from '../data/ui';
@@ -77,14 +76,26 @@ export function About() {
                             {personal.lead}
                         </motion.p>
 
-                        {personal.paragraphs.map((paragraph, index) => (
-                            <motion.p
-                                key={index}
-                                variants={fadeUp}
-                                className='mt-5 max-w-xl leading-relaxed text-muted'>
-                                {paragraph}
-                            </motion.p>
-                        ))}
+                        {/* The personal copy runs long by design, so it opens clipped
+                with a "read more" toggle rather than pushing the interest
+                chips a screen and a half down the page. One fadeUp for the
+                whole block: animating each paragraph would fight the height
+                tween the toggle runs. */}
+                        <motion.div variants={fadeUp}>
+                            <ReadMore
+                                moreLabel={ui.about.readMore}
+                                lessLabel={ui.about.readLess}
+                                scrollLabel={ui.about.readRegionLabel}
+                                className='max-w-xl'>
+                                {personal.paragraphs.map((paragraph, index) => (
+                                    <p
+                                        key={index}
+                                        className='mt-5 leading-relaxed text-muted'>
+                                        {paragraph}
+                                    </p>
+                                ))}
+                            </ReadMore>
+                        </motion.div>
 
                         {personal.interests.length > 0 && (
                             <motion.ul

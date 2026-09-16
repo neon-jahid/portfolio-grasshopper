@@ -222,6 +222,33 @@
   color: transparent;
 }
 
+/* A scroll area that doesn't shout. The default Windows/Chrome scrollbar is a
+ * wide grey slab that reads as a browser chrome artefact dropped into the
+ * page; this narrows it and paints it in the site's own line/faint colours so
+ * a scrollable block still looks designed. Firefox gets `scrollbar-*`, the
+ * WebKit browsers get the pseudo-elements — both degrade to the default. */
+@utility scroll-slim {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line) transparent;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-line);
+    border-radius: 999px;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: var(--color-faint);
+  }
+}
+
 /* Fine film grain laid over the background glows. Softens the gradients and
  * gives the page a printed, hand-made feel instead of a flat digital one. */
 @utility bg-grain {

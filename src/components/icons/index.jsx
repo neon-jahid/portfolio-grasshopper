@@ -276,6 +276,12 @@ export const ChevronRightIcon = (props) => (
   </Svg>
 );
 
+export const ChevronDownIcon = (props) => (
+  <Svg {...props}>
+    <path d="m5 9 7 7 7-7" />
+  </Svg>
+);
+
 export const ExpandIcon = (props) => (
   <Svg {...props}>
     <path d="M9 3H3v6M15 21h6v-6M3 15v6h6M21 9V3h-6" />
@@ -329,6 +335,7 @@ const iconsByName = {
   fish: FishIcon,
   chevronLeft: ChevronLeftIcon,
   chevronRight: ChevronRightIcon,
+  chevronDown: ChevronDownIcon,
   expand: ExpandIcon,
   quote: QuoteIcon,
 };
